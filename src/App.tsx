@@ -12,42 +12,44 @@ const App = () => {
               Please provide your name, email address, and phone number.
             </p>
           </div>
-          <form className="">
+          <form className="flex flex-col justify-between  h-[480px]">
             <div>
-            <label className="block pt-5">
-              <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
-                Name
-              </p>
-              <input
-                type="text"
-                placeholder="e.g. Stephen King"
-                className="border border-Purple-200 rounded-md p-2 w-full "
-              />
-            </label>
-            <label className="block pt-">
-              <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
-                Email Address
-              </p>
-              <input
-                type="email"
-                placeholder="e.g. stephenking@lorem.com"
-                className="border border-Purple-200 rounded-md p-2 w-full "
-              />
-            </label>
-            <label className="block pt-">
-              <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
-                Phone Number
-              </p>
-              <input
-                type="tel"
-                placeholder="e.g. +1 234 567 890"
-                className="border border-Purple-200 rounded-md p-2 w-full "
-              />
-            </label>
+              <label className="block pt-5">
+                <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
+                  Name
+                </p>
+                <input
+                  type="text"
+                  placeholder="e.g. Stephen King"
+                  className="border border-Purple-200 rounded-md p-2 w-full "
+                />
+              </label>
+              <label className="block pt-">
+                <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
+                  Email Address
+                </p>
+                <input
+                  type="email"
+                  placeholder="e.g. stephenking@lorem.com"
+                  className="border border-Purple-200 rounded-md p-2 w-full "
+                />
+              </label>
+              <label className="block pt-">
+                <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
+                  Phone Number
+                </p>
+                <input
+                  type="tel"
+                  placeholder="e.g. +1 234 567 890"
+                  className="border border-Purple-200 rounded-md p-2 w-full "
+                />
+              </label>
             </div>
-            <button className="mt-10 bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900">
-              Next Step
-            </button>
+            <div className="flex justify-end">
+              <button className="mt-10 bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right ">
+                Next Step
+              </button>
+            </div>
           </form>
         </div>
       </div>
