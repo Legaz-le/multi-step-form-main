@@ -12,7 +12,7 @@ const App = () => {
               Please provide your name, email address, and phone number.
             </p>
           </div>
-          <form className="flex flex-col justify-between  h-[480px]">
+          <form className="flex flex-col justify-between h-[475px]">
             <div>
               <label className="block pt-5">
                 <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
@@ -45,8 +45,8 @@ const App = () => {
                 />
               </label>
             </div>
-            <div className="flex justify-end">
-              <button className="mt-10 bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer">
+            <div className="">
+              <button className="bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer">
                 Next Step
               </button>
             </div>
