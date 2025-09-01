@@ -46,7 +46,7 @@ const App = () => {
               </label>
             </div>
             <div className="flex justify-end">
-              <button className="mt-10 bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right ">
+              <button className="mt-10 bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer">
                 Next Step
               </button>
             </div>
