@@ -6,7 +6,7 @@ const App = () => {
           <img src="/public/images/bg-sidebar-desktop.svg"></img>
         </div>
         <div className="">
-          <div className="pt-5 space-y-1">
+          <div className="pt-8 space-y-1">
             <h1 className="text-2xl text-Blue-950 font-[700]">Personal info</h1>
             <p className="text-[16px] text-Grey-500 font-[400]">
               Please provide your name, email address, and phone number.
