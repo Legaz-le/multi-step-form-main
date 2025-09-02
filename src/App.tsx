@@ -1,9 +1,11 @@
+import StepsProcess from "./components/steps";
+
 const App = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-Blue-200">
       <div className="flex item-center bg-White p-5 max-w-4xl w-full  rounded-lg shadow-lg space-x-20">
         <div className="">
-          <img src="/public/images/bg-sidebar-desktop.svg"></img>
+          <StepsProcess />
         </div>
         <div className="">
           <div className="pt-8 space-y-1">
