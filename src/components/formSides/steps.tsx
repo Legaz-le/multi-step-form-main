@@ -1,4 +1,4 @@
-import Step from "./Step";
+import Step from "../Step";
 const steps = [
   { number: 1, label: "STEP 1", desc: "YOUR INFO" },
   { number: 2, label: "STEP 2", desc: "SELECT PLAN" },
