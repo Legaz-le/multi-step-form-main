@@ -7,7 +7,7 @@ const App = () => {
         <div className="">
           <StepsProcess />
         </div>
-        <div className="">
+        <div>
           <div className="pt-8 space-y-1">
             <h1 className="text-2xl text-Blue-950 font-[700]">Personal info</h1>
             <p className="text-[16px] text-Grey-500 font-[400]">
@@ -26,7 +26,7 @@ const App = () => {
                   className="border border-Purple-200 rounded-md p-2 w-full "
                 />
               </label>
-              <label className="block pt-">
+              <label className="block">
                 <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
                   Email Address
                 </p>
@@ -36,7 +36,7 @@ const App = () => {
                   className="border border-Purple-200 rounded-md p-2 w-full "
                 />
               </label>
-              <label className="block pt-">
+              <label className="block">
                 <p className="text-Blue-900 font-[500] text-[14px] pt-5 pb-1">
                   Phone Number
                 </p>
@@ -47,7 +47,7 @@ const App = () => {
                 />
               </label>
             </div>
-            <div className="">
+            <div>
               <button className="bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer">
                 Next Step
               </button>
