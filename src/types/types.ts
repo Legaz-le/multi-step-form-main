@@ -17,7 +17,13 @@ export type StepType = {
   desc: string;
   isFirst: boolean;
 };
+export type AddOnsType = {
+  title: string;
+  desc: string;
+  price: string;
+};
+
 export type TitleType = {
   title: string;
   desc: string;
-}
+};
