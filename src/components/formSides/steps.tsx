@@ -1,10 +1,5 @@
 import Step from "../Step";
-const steps = [
-  { number: 1, label: "STEP 1", desc: "YOUR INFO" },
-  { number: 2, label: "STEP 2", desc: "SELECT PLAN" },
-  { number: 3, label: "STEP 3", desc: "ADD-ONS" },
-  { number: 4, label: "STEP 4", desc: "SUMMARY" },
-];
+import { steps } from "../../data/data";
 
 const StepsProcess = () => {
   return (

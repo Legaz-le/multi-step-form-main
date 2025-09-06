@@ -1,9 +1,4 @@
-type StepType = {
-  number: number;
-  label: string;
-  desc: string;
-  isFirst:boolean;
-};
+import type { StepType } from "../types/types";
 
 const Step = ({ number, label, desc, isFirst }: StepType) => {
   return (

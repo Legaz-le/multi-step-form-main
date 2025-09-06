@@ -1,19 +1,6 @@
 import Button from "../Button";
 import Forms from "../FormsInfo";
-
-const formInfo = [
-  { name: "Name", type: "text", placeholder: "e.g. Stephen King" },
-  {
-    name: "Email Address",
-    type: "email",
-    placeholder: "e.g. stephenking@lorem.com",
-  },
-  {
-    name: "Phone Number",
-    type: "tel",
-    placeholder: "e.g. +1 234 567 890",
-  },
-];
+import { formInfo } from "../../data/data";
 
 const Form = () => {
   return (
@@ -35,7 +22,7 @@ const Form = () => {
             />
           ))}
         </div>
-       <Button />
+        <Button />
       </form>
     </div>
   );

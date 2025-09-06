@@ -1,9 +1,4 @@
-type OptionType = {
-  img: string;
-  alt: string;
-  name: string;
-  price: string;
-};
+import type { OptionType } from "../types/types";
 
 const Option = ({ img, alt, name, price }: OptionType) => {
   return (
