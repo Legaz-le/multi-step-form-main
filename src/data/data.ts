@@ -41,3 +41,12 @@ export const option:OptionType[] = [
     price: "$150/yr",
   },
 ];
+export const FormSectionTop = [
+    {title: "Personal info", desc: 'Please provide your name, email address, and phone number.'}
+]
+export const SecondSectionTop = [
+    {title: "Select your plan", desc: 'You have the option of monthly or yearly billing.'}
+]
+export const AddOnsSectionTop = [
+    {title: "Pick add-ons", desc: 'Add-ons help enhance your gaming experience.'}
+]

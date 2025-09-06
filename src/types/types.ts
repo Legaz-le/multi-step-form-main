@@ -17,3 +17,7 @@ export type StepType = {
   desc: string;
   isFirst: boolean;
 };
+export type TitleType = {
+  title: string;
+  desc: string;
+}

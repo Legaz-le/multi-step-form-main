@@ -1,16 +1,19 @@
 import Button from "../Button";
 import Option from "../Option";
 import { option } from "../../data/data";
+import TopSection from "../TopSection";
+import { SecondSectionTop } from "../../data/data";
 
 const SecondStep = () => {
   return (
     <div className="flex flex-col space-y-9 ">
-      <div className="pt-8 space-y-1">
-        <h1 className="text-2xl text-Blue-950 font-[700]">Select your plan</h1>
-        <p className="text-[16px] text-Grey-500 font-[400]">
-          You have the option of monthly or yearly billing.
-        </p>
-      </div>
+      {SecondSectionTop.map((second)=>(
+        <TopSection 
+        key={second.title}
+        title={second.title}
+        desc={second.desc}
+      />
+      ))}
       <div className="grid grid-cols-3 gap-5">
         {option.map((info) => (
           <Option
