@@ -1,6 +1,7 @@
 import TopSection from "../TopSection";
 import { addOnsData, AddOnsSectionTop } from "../../data/data";
 import AddOnsBody from "../AddOnsBody";
+import Button from "../Button";
 const AddOns = () => {
   return (
     <div className="space-y-9">
@@ -16,6 +17,9 @@ const AddOns = () => {
           price={addInfo.price}
         />
       ))}
+      </div>
+      <div className="mt-30">
+      <Button />
       </div>
     </div>
   );
