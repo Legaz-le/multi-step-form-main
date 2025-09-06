@@ -11,9 +11,9 @@ const Step = ({ number, label, desc, isFirst }: StepType) => {
       <div className="w-8 h-8 rounded-full flex items-center justify-center border-1 border-White">
         <span className="text-White ">{number}</span>
       </div>
-      <div >
+      <div>
         <span className="text-Grey-500 text-[13px] font-[400]">{label}</span>
-        <p className="text-White text-[13px] font-[500]">{desc}</p>
+        <p className="text-White text-[13px] font-[500] tracking-widest">{desc}</p>
       </div>
     </div>
   );
