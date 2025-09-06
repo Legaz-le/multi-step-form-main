@@ -1,6 +1,6 @@
-import type { TitleType } from "../types/types";
+import type { SectionType } from "../types/types";
 
-const TopSection = ({title, desc}:TitleType) => {
+const TopSection = ({title, desc}:SectionType) => {
   return (
     <div className="pt-8 space-y-1">
       <h1 className="text-2xl text-Blue-950 font-[700]">{title}</h1>

@@ -1,6 +1,6 @@
 import Button from "../Button";
 import Option from "../Option";
-import { option } from "../../data/data";
+import { option } from "../../data/index";
 import TopSection from "../TopSection";
 import { SecondSectionTop } from "../../data/data";
 

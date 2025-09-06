@@ -15,15 +15,14 @@ export type StepType = {
   number: number;
   label: string;
   desc: string;
-  isFirst: boolean;
-};
-export type AddOnsType = {
-  title: string;
-  desc: string;
-  price: string;
+  isFirst?: boolean;
 };
 
-export type TitleType = {
+export type SectionType = {
   title: string;
   desc: string;
+};
+
+export type AddOnsType = SectionType & {
+  price: string;
 };

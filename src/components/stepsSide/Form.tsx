@@ -6,7 +6,7 @@ import { FormSectionTop } from "../../data/data";
 
 const Form = () => {
   return (
-    <div>
+    <section>
       {FormSectionTop.map((form) => (
         <TopSection
           key={form.title}
@@ -27,7 +27,7 @@ const Form = () => {
         </div>
         <Button />
       </form>
-    </div>
+    </section>
   );
 };
 

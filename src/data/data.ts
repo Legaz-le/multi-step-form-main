@@ -3,13 +3,14 @@ import type {
   FormType,
   StepType,
   AddOnsType,
+  SectionType,
 } from "../types/types";
 
 export const steps: StepType[] = [
   { number: 1, label: "STEP 1", desc: "YOUR INFO", isFirst: true },
-  { number: 2, label: "STEP 2", desc: "SELECT PLAN", isFirst: false },
-  { number: 3, label: "STEP 3", desc: "ADD-ONS", isFirst: false },
-  { number: 4, label: "STEP 4", desc: "SUMMARY", isFirst: false },
+  { number: 2, label: "STEP 2", desc: "SELECT PLAN" },
+  { number: 3, label: "STEP 3", desc: "ADD-ONS" },
+  { number: 4, label: "STEP 4", desc: "SUMMARY" },
 ];
 
 export const formInfo: FormType[] = [
@@ -61,19 +62,19 @@ export const addOnsData: AddOnsType[] = [
   },
 ];
 
-export const FormSectionTop = [
+export const FormSectionTop:SectionType[] = [
   {
     title: "Personal info",
     desc: "Please provide your name, email address, and phone number.",
   },
 ];
-export const SecondSectionTop = [
+export const SecondSectionTop:SectionType[] = [
   {
     title: "Select your plan",
     desc: "You have the option of monthly or yearly billing.",
   },
 ];
-export const AddOnsSectionTop = [
+export const AddOnsSectionTop:SectionType[] = [
   {
     title: "Pick add-ons",
     desc: "Add-ons help enhance your gaming experience.",
