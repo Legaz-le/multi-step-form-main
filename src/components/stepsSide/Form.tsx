@@ -1,3 +1,4 @@
+import Button from "../Button";
 import Forms from "../FormsInfo";
 
 const formInfo = [
@@ -23,7 +24,7 @@ const Form = () => {
           Please provide your name, email address, and phone number.
         </p>
       </div>
-      <form className="flex flex-col justify-between h-[475px]">
+      <form className="flex flex-col justify-between h-[465px]">
         <div>
           {formInfo.map((info) => (
             <Forms
@@ -34,11 +35,7 @@ const Form = () => {
             />
           ))}
         </div>
-        <div>
-          <button className="bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer">
-            Next Step
-          </button>
-        </div>
+       <Button />
       </form>
     </div>
   );

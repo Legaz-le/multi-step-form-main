@@ -4,8 +4,8 @@ import SecondStep from "../stepsSide/SecondStep"
 const WriteSide = () => {
   return (
     <div>
-      {/* <Form /> */}
-      <SecondStep />
+      <Form />
+      {/* <SecondStep /> */}
     </div>
   )
 }

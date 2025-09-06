@@ -1,3 +1,4 @@
+import Button from "../Button";
 import Option from "../Option";
 
 const option = [
@@ -55,9 +56,7 @@ const SecondStep = () => {
       </div>
       <div className="mt-16 flex items-center justify-between">
         <button className="text-Grey-500 font-[700]">Go Back</button>
-        <button className="bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer">
-          Next Step
-        </button>
+        <Button />
       </div>
     </div>
   );
