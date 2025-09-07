@@ -1,20 +1,20 @@
 import Button from "../Button";
 import Option from "../Option";
-import { option } from "../../data/index";
+import { option } from "../../data/data";
 import TopSection from "../TopSection";
 import { sectionHeaders } from "../../data/data";
+import { useFormContext } from "../../context/useFormContex";
 
 const SecondStep = () => {
+  const { state, updateStep } = useFormContext();
+
   return (
-    <div className="flex flex-col space-y-9 ">
-      {sectionHeaders.map((second)=>(
-        <TopSection 
-        key={second.stepNumber}
-        stepNumber={second.stepNumber}
-        title={second.title}
-        desc={second.desc}
+    <section className="flex flex-col space-y-9 ">
+      <TopSection
+        stepNumber={sectionHeaders[state.step - 0].stepNumber}
+        title={sectionHeaders[state.step - 0].title}
+        desc={sectionHeaders[state.step - 0].desc}
       />
-      ))}
       <div className="grid grid-cols-3 gap-5">
         {option.map((info) => (
           <Option
@@ -39,10 +39,16 @@ const SecondStep = () => {
         <p className="text-Grey-500 font-[400]">Yearly</p>
       </div>
       <div className="mt-16 flex items-center justify-between">
-        <button className="text-Grey-500 font-[700]">Go Back</button>
+        <button
+          type="button"
+          onClick={() =>updateStep(-1)}
+          className="text-Grey-500 font-[700] cursor-pointer"
+        >
+          Go Back
+        </button>
         <Button />
       </div>
-    </div>
+    </section>
   );
 };
 

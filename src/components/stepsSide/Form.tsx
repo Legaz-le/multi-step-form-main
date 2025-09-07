@@ -5,7 +5,8 @@ import { formInfo, sectionHeaders } from "../../data/data";
 import TopSection from "../TopSection";
 
 const Form = () => {
-  const { state, } = useFormContext();
+
+  const { state } = useFormContext();
 
   return (
     <section>
@@ -26,7 +27,7 @@ const Form = () => {
               />
             ))}
           </div>
-          <Button />
+          <Button  />
         </form>
       )}
     </section>

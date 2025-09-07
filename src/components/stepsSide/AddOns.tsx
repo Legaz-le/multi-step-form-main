@@ -2,17 +2,18 @@ import TopSection from "../TopSection";
 import { sectionHeaders, addOnsData } from "../../data/data";
 import AddOnsBody from "../AddOnsBody";
 import Button from "../Button";
+import { useFormContext } from "../../context/useFormContex";
+
 const AddOns = () => {
+  const { state, updateStep } = useFormContext();
+
   return (
-    <div className="space-y-9">
-      {sectionHeaders.map((section) => (
-        <TopSection
-          key={section.stepNumber}
-          stepNumber={section.stepNumber}
-          title={section.title}
-          desc={section.desc}
-        />
-      ))}
+    <section className="space-y-9">
+      <TopSection
+        stepNumber={sectionHeaders[state.step - 3].stepNumber}
+        title={sectionHeaders[state.step - 3].title}
+        desc={sectionHeaders[state.step - 3].desc}
+      />
       <div className="space-y-5">
         {addOnsData.map((addInfo) => (
           <AddOnsBody
@@ -24,10 +25,16 @@ const AddOns = () => {
         ))}
       </div>
       <div className="flex items-center justify-between mt-30">
-        <button className="text-Grey-500 font-[700]">Go Back</button>
+        <button
+          type="button"
+          onClick={() => updateStep(-1)}
+          className="text-Grey-500 font-[700] cursor-pointer"
+        >
+          Go Back
+        </button>
         <Button />
       </div>
-    </div>
+    </section>
   );
 };
 
