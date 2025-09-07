@@ -2,7 +2,7 @@ import type { OptionType } from "../types/types";
 
 const Option = ({ img, alt, name, price }: OptionType) => {
   return (
-    <div className="border-Purple-200 border-1  items-start flex flex-col space-y-12 rounded-lg p-4 pr-5 cursor-pointer">
+    <div className="border-Purple-200 border-1  items-start flex flex-col space-y-12 rounded-lg p-4 pr-4 cursor-pointer">
       <img src={img} alt={alt} />
       <div className="w-[100px]">
         <p className="text-Blue-950 font-[700] text-[17px]">{name}</p>

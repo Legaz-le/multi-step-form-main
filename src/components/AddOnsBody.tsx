@@ -1,13 +1,19 @@
 import type { AddOnsType } from "../types/types";
 
-
-const AddOnsBody = ({title, desc,price}: AddOnsType) => {
+const AddOnsBody = ({ title, desc, price }: AddOnsType) => {
   return (
-    <label className="flex items-center justify-between border rounded-sm px-5 py-3 w-[440px] cursor-pointer focus:bg-Blue-100">
+    <label className="flex items-center justify-between border rounded-sm px-5 py-3  cursor-pointer focus:bg-Blue-100">
       <div className="flex items-center justify-center gap-6">
-        <label className="relative inline-flex items-center" >
-        <input type="checkbox" className="peer appearance-none  w-4.5 h-4.5 border rounded-sm checked:bg-Purple-600" />
-        <img src="/images/icon-checkmark.svg" alt="icon-checkmark" className="hidden absolute inset-0 m-auto w-3 h-3 peer-checked:block " />
+        <label className="relative inline-flex items-center">
+          <input
+            type="checkbox"
+            className="peer appearance-none  w-4.5 h-4.5 border rounded-sm checked:bg-Purple-600"
+          />
+          <img
+            src="/images/icon-checkmark.svg"
+            alt="icon-checkmark"
+            className="hidden absolute inset-0 m-auto w-3 h-3 peer-checked:block "
+          />
         </label>
         <div>
           <h1 className="text-Blue-950 font-[700]">{title}</h1>

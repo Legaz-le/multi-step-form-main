@@ -2,7 +2,7 @@ import type { FormType } from "../types/types";
 
 const Forms = ({ name, type, placeholder }: FormType) => {
   return (
-    <label className="block pt-5 cursor-pointer">
+    <label className="block  cursor-pointer">
       <div className="flex item-scenter justify-between pt-2 pb-1">
         <p className="text-Blue-950 font-[500] text-[14px] ">{name}</p>
         <p className="text-[14px] font-[500] text-Red-500 hidden">This field is required</p>

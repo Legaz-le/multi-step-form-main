@@ -1,19 +1,20 @@
-import Button from "../Button";
 import Option from "../Option";
 import { option } from "../../data/data";
 import TopSection from "../TopSection";
 import { sectionHeaders } from "../../data/data";
 import { useFormContext } from "../../context/useFormContex";
+import NextButton from "../NextButton";
+import GoBackButton from "../GoBackButton";
 
 const SecondStep = () => {
-  const { state, updateStep } = useFormContext();
+  const { state } = useFormContext();
 
   return (
-    <section className="flex flex-col space-y-9 ">
+    <section className="space-y-9 w-md">
       <TopSection
-        stepNumber={sectionHeaders[state.step - 0].stepNumber}
-        title={sectionHeaders[state.step - 0].title}
-        desc={sectionHeaders[state.step - 0].desc}
+        stepNumber={sectionHeaders[state.step - 1].stepNumber}
+        title={sectionHeaders[state.step - 1].title}
+        desc={sectionHeaders[state.step - 1].desc}
       />
       <div className="grid grid-cols-3 gap-5">
         {option.map((info) => (
@@ -38,15 +39,9 @@ const SecondStep = () => {
         </label>
         <p className="text-Grey-500 font-[400]">Yearly</p>
       </div>
-      <div className="mt-16 flex items-center justify-between">
-        <button
-          type="button"
-          onClick={() =>updateStep(-1)}
-          className="text-Grey-500 font-[700] cursor-pointer"
-        >
-          Go Back
-        </button>
-        <Button />
+      <div className="mt-20 flex items-center justify-between">
+        <GoBackButton />
+        <NextButton />
       </div>
     </section>
   );
