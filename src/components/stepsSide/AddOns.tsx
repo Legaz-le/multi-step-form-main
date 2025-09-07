@@ -1,12 +1,17 @@
 import TopSection from "../TopSection";
-import { addOnsData, AddOnsSectionTop } from "../../data/data";
+import { sectionHeaders, addOnsData } from "../../data/data";
 import AddOnsBody from "../AddOnsBody";
 import Button from "../Button";
 const AddOns = () => {
   return (
     <div className="space-y-9">
-      {AddOnsSectionTop.map((add) => (
-        <TopSection key={add.title} title={add.title} desc={add.desc} />
+      {sectionHeaders.map((section) => (
+        <TopSection
+          key={section.stepNumber}
+          stepNumber={section.stepNumber}
+          title={section.title}
+          desc={section.desc}
+        />
       ))}
       <div className="space-y-5">
         {addOnsData.map((addInfo) => (

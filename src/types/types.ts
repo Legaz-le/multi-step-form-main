@@ -21,8 +21,20 @@ export type StepType = {
 export type SectionType = {
   title: string;
   desc: string;
+  stepNumber:number;
 };
 
-export type AddOnsType = SectionType & {
+export type AddOnsType =  {
+  title: string;
+  desc: string;
   price: string;
+};
+
+export type FormState = {
+  step: number;
+};
+
+export type FormContextType = {
+  state: FormState;
+  updateStep: (delta:number) => void;
 };

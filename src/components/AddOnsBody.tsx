@@ -7,7 +7,7 @@ const AddOnsBody = ({title, desc,price}: AddOnsType) => {
       <div className="flex items-center justify-center gap-6">
         <label className="relative inline-flex items-center" >
         <input type="checkbox" className="peer appearance-none  w-4.5 h-4.5 border rounded-sm checked:bg-Purple-600" />
-        <img src="/public/images/icon-checkmark.svg" alt="icon-checkmark" className="hidden absolute inset-0 m-auto w-3 h-3 peer-checked:block " />
+        <img src="/images/icon-checkmark.svg" alt="icon-checkmark" className="hidden absolute inset-0 m-auto w-3 h-3 peer-checked:block " />
         </label>
         <div>
           <h1 className="text-Blue-950 font-[700]">{title}</h1>

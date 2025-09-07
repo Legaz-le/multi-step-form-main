@@ -2,14 +2,15 @@ import Button from "../Button";
 import Option from "../Option";
 import { option } from "../../data/index";
 import TopSection from "../TopSection";
-import { SecondSectionTop } from "../../data/data";
+import { sectionHeaders } from "../../data/data";
 
 const SecondStep = () => {
   return (
     <div className="flex flex-col space-y-9 ">
-      {SecondSectionTop.map((second)=>(
+      {sectionHeaders.map((second)=>(
         <TopSection 
-        key={second.title}
+        key={second.stepNumber}
+        stepNumber={second.stepNumber}
         title={second.title}
         desc={second.desc}
       />

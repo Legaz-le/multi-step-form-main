@@ -62,20 +62,19 @@ export const addOnsData: AddOnsType[] = [
   },
 ];
 
-export const FormSectionTop:SectionType[] = [
+export const sectionHeaders: SectionType[] = [
   {
+    stepNumber: 1,
     title: "Personal info",
     desc: "Please provide your name, email address, and phone number.",
   },
-];
-export const SecondSectionTop:SectionType[] = [
   {
+    stepNumber: 2,
     title: "Select your plan",
     desc: "You have the option of monthly or yearly billing.",
   },
-];
-export const AddOnsSectionTop:SectionType[] = [
-  {
+   {
+    stepNumber: 3,
     title: "Pick add-ons",
     desc: "Add-ons help enhance your gaming experience.",
   },
