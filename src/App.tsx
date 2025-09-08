@@ -1,5 +1,5 @@
 import StepsProcess from "./components/formSides/steps";
-import WriteSide from "./components/formSides/WriteSide";
+import WriteSide from "./components/form/Form";
 
 const App = () => {
   return (

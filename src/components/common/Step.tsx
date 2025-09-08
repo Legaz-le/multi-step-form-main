@@ -1,4 +1,4 @@
-import type { StepType } from "../types/types";
+import type { StepType } from "../../types/types";
 
 const Step = ({ number, label, desc, isFirst }: StepType) => {
   return (
@@ -8,7 +8,9 @@ const Step = ({ number, label, desc, isFirst }: StepType) => {
       </div>
       <div>
         <span className="text-Grey-500 text-[13px] font-[400]">{label}</span>
-        <p className="text-White text-[13px] font-[500] tracking-widest">{desc}</p>
+        <p className="text-White text-[13px] font-[500] tracking-widest">
+          {desc}
+        </p>
       </div>
     </div>
   );
