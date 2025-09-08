@@ -7,7 +7,7 @@ const Step = ({ number, label, desc, isFirst }: StepType) => {
         <span className="text-White ">{number}</span>
       </div>
       <div>
-        <span className="text-Grey-500 text-[13px] font-[400]">{label}</span>
+        <span className="text-Grey-500 text-[13px] font-[40]">{label}</span>
         <p className="text-White text-[13px] font-[500] tracking-widest">
           {desc}
         </p>
