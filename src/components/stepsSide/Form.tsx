@@ -2,13 +2,12 @@ import { useFormContext } from "../../context/FormContext";
 import Forms from "../FormsInfo";
 import { formInfo, sectionHeaders } from "../../data/data";
 import TopSection from "../TopSection";
-import NextButton from "../NextButton";
 
 const Form = () => {
   const { state } = useFormContext();
 
   return (
-    <section className="space-y-9 w-md">
+    <section className="space-y-9 ">
       <TopSection
         stepNumber={sectionHeaders[state.step - 1].stepNumber}
         title={sectionHeaders[state.step - 1].title}
@@ -24,9 +23,6 @@ const Form = () => {
           />
         ))}
       </form>
-      <div className="mt-20">
-      <NextButton />
-      </div>
     </section>
   );
 };

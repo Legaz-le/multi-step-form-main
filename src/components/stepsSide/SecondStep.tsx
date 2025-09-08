@@ -3,14 +3,12 @@ import { option } from "../../data/data";
 import TopSection from "../TopSection";
 import { sectionHeaders } from "../../data/data";
 import { useFormContext } from "../../context/FormContext";
-import NextButton from "../NextButton";
-import GoBackButton from "../GoBackButton";
 
 const SecondStep = () => {
   const { state } = useFormContext();
 
   return (
-    <section className="space-y-9 w-md">
+    <section className="space-y-9 ">
       <TopSection
         stepNumber={sectionHeaders[state.step - 1].stepNumber}
         title={sectionHeaders[state.step - 1].title}
@@ -38,10 +36,6 @@ const SecondStep = () => {
           <span className="absolute top-1/2 start-1 -translate-y-1/2 size-3.5 bg-white rounded-full  transition-transform duration-200 ease-in-out peer-checked:translate-x-5.5"></span>
         </label>
         <p className="text-Grey-500 font-[400]">Yearly</p>
-      </div>
-      <div className="mt-20 flex items-center justify-between">
-        <GoBackButton />
-        <NextButton />
       </div>
     </section>
   );

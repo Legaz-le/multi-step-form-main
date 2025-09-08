@@ -2,14 +2,12 @@ import TopSection from "../TopSection";
 import { sectionHeaders, addOnsData } from "../../data/data";
 import AddOnsBody from "../AddOnsBody";
 import { useFormContext } from "../../context/FormContext";
-import NextButton from "../NextButton";
-import GoBackButton from "../GoBackButton";
 
 const AddOns = () => {
   const { state } = useFormContext();
 
   return (
-    <section className="space-y-9 w-md">
+    <section className="space-y-9 ">
       <TopSection
         stepNumber={sectionHeaders[state.step - 1].stepNumber}
         title={sectionHeaders[state.step - 1].title}
@@ -24,10 +22,6 @@ const AddOns = () => {
             price={addInfo.price}
           />
         ))}
-      </div>
-      <div className="mt-20 flex items-center justify-between">
-        <GoBackButton />
-        <NextButton />
       </div>
     </section>
   );
