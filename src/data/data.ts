@@ -29,19 +29,19 @@ export const formInfo: FormType[] = [
 
 export const option: OptionType[] = [
   {
-    img: "/public/images/icon-arcade.svg",
+    img: "/images/icon-arcade.svg",
     alt: "arcade-icon",
     name: "Arcade",
     price: "$90/yr",
   },
   {
-    img: "/public/images/icon-advanced.svg",
+    img: "/images/icon-advanced.svg",
     alt: "advanced-icon",
     name: "Advanced",
     price: "$120/yr",
   },
   {
-    img: "/public/images/icon-pro.svg",
+    img: "/images/icon-pro.svg",
     alt: "pro-icon",
     name: "Pro",
     price: "$150/yr",
