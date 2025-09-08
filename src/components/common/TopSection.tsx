@@ -1,4 +1,4 @@
-import type { SectionType } from "../types/types";
+import type { SectionType } from "../../types/types";
 
 
 const TopSection = ({title, desc}:SectionType) => {
