@@ -2,7 +2,7 @@ import type { AddOnsType } from "../types/types";
 
 const AddOnsBody = ({ title, desc, price }: AddOnsType) => {
   return (
-    <label className="flex items-center justify-between border rounded-sm px-5 py-3  cursor-pointer focus:bg-Blue-100">
+    <label className="flex items-center justify-between border rounded-sm px-5 py-3  cursor-pointer hover:border-Purple-600">
       <div className="flex items-center justify-center gap-6">
         <label className="relative inline-flex items-center">
           <input
