@@ -2,7 +2,7 @@ import Option from "../Option";
 import { option } from "../../data/data";
 import TopSection from "../TopSection";
 import { sectionHeaders } from "../../data/data";
-import { useFormContext } from "../../context/useFormContex";
+import { useFormContext } from "../../context/FormContext";
 import NextButton from "../NextButton";
 import GoBackButton from "../GoBackButton";
 

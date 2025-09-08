@@ -1,7 +1,7 @@
 import AddOns from "../stepsSide/AddOns";
 import Form from "../stepsSide/Form";
 import SecondStep from "../stepsSide/SecondStep";
-import { useFormContext } from "../../context/useFormContex";
+import { useFormContext } from "../../context/FormContext";
 
 const WriteSide = () => {
   

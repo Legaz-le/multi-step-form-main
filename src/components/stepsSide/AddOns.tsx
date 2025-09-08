@@ -1,7 +1,7 @@
 import TopSection from "../TopSection";
 import { sectionHeaders, addOnsData } from "../../data/data";
 import AddOnsBody from "../AddOnsBody";
-import { useFormContext } from "../../context/useFormContex";
+import { useFormContext } from "../../context/FormContext";
 import NextButton from "../NextButton";
 import GoBackButton from "../GoBackButton";
 

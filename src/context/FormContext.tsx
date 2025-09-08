@@ -1,6 +1,11 @@
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext } from "react";
+import type { FormContextType } from "../types/types";
 import { useState } from "react";
 import type { FormState } from "../types/types";
-import { FormContext } from "./FormContext";
+
+const FormContext = createContext<FormContextType | null>(null);
+
 
 export const FormProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, setState] = useState<FormState>({ step: 1 });
@@ -13,4 +18,10 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </FormContext.Provider>
   );
+};
+
+export const useFormContext = () => {
+  const ctx = useContext(FormContext);
+  if (!ctx) throw new Error("useFormContex must be used inside FormProvider");
+  return ctx;
 };

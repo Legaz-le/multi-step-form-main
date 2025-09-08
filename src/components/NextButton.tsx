@@ -1,4 +1,4 @@
-import { useFormContext } from "../context/useFormContex";
+import { useFormContext } from "../context/FormContext";
 
 const NextButton = () => {
   const { updateStep } = useFormContext();
