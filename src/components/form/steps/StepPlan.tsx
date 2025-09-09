@@ -25,7 +25,7 @@ const SecondStep = () => {
           />
         ))}
       </div>
-      <div className="p-3 bg-Blue-50 flex items-center justify-center gap-5">
+      <div className="p- bg-Blue-50 flex items-center justify-center gap-5">
         <p className="text-Blue-950 font-[700]">Montly</p>
         <label
           htmlFor="hs-basic-usage"
