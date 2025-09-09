@@ -1,13 +1,14 @@
 import AddOns from "./steps/StepAddOns";
 import Form from "./steps/StepPersonalInfo";
 import SecondStep from "./steps/StepPlan";
+import StepSummary from "./steps/StepSummary";
 import { useFormContext } from "../../context/FormContext";
 import NextButton from "../common/NextButton";
 import GoBackButton from "../common/GoBackButton";
 
 const WriteSide = () => {
   const { state } = useFormContext();
-  const stepsComponents = [Form, SecondStep, AddOns];
+  const stepsComponents = [Form, SecondStep, AddOns, StepSummary];
   const CurrentStep = stepsComponents[state.step - 1];
 
   return (

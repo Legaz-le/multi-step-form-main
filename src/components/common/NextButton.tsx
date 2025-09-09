@@ -2,15 +2,17 @@ import { useFormContext } from "../../context/FormContext";
 
 const NextButton = () => {
   const { updateStep, state } = useFormContext();
-  const isLastStep = state.step === 3;
+  const isLastStep = state.step === 4;
 
   return (
     <button
       type="button"
-      className="bg-Blue-950 text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer"
+      className={`${
+        isLastStep ? "bg-Purple-600" : "bg-Blue-950"
+      } text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer`}
       onClick={() => updateStep(isLastStep ? 0 : 1)}
     >
-      Next Step
+      {isLastStep ? "Confirm " : "Next Step"}
     </button>
   );
 };

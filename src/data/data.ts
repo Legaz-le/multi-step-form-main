@@ -78,4 +78,9 @@ export const sectionHeaders: SectionType[] = [
     title: "Pick add-ons",
     desc: "Add-ons help enhance your gaming experience.",
   },
+  {
+    stepNumber: 4,
+    title: "Finishing up",
+    desc: "Double-check everything looks OK before confirming.",
+  },
 ];
