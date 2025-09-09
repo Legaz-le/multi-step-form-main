@@ -3,8 +3,8 @@ import Form from "./steps/StepPersonalInfo";
 import SecondStep from "./steps/StepPlan";
 import StepSummary from "./steps/StepSummary";
 import { useFormContext } from "../../context/FormContext";
-import NextButton from "../common/NextButton";
-import GoBackButton from "../common/GoBackButton";
+import NextButton from "../common/buttons/NextButton";
+import GoBackButton from "../common/buttons/GoBackButton";
 
 const WriteSide = () => {
   const { state } = useFormContext();

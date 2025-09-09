@@ -1,4 +1,4 @@
-import StepsProcess from "./components/formSides/steps";
+import StepsProcess from "./components/stpes/steps";
 import WriteSide from "./components/form/Form";
 
 const App = () => {

@@ -1,4 +1,4 @@
-import type { AddOnsType } from "../../types/types";
+import type { AddOnsType } from "../../../types/types";
 
 const AddOnsBody = ({ title, desc, price }: AddOnsType) => {
   return (

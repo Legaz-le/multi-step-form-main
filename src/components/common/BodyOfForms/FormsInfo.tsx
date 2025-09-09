@@ -1,4 +1,4 @@
-import type { FormType } from "../../types/types";
+import type { FormType } from "../../../types/types";
 
 const Forms = ({ name, type, placeholder }: FormType) => {
   return (

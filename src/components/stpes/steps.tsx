@@ -1,4 +1,4 @@
-import Step from "../common/Step";
+import Step from "./Step";
 import { steps } from "../../data/data";
 
 const StepsProcess = () => {

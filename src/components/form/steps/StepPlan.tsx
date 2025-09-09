@@ -1,6 +1,6 @@
-import Option from "../../common/Option";
+import Option from "../../common/BodyOfForms/Option";
 import { option } from "../../../data/data";
-import TopSection from "../../common/TopSection";
+import TopSection from "../../common/BodyOfForms/TopSection";
 import { sectionHeaders } from "../../../data/data";
 import { useFormContext } from "../../../context/FormContext";
 

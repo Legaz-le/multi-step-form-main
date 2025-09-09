@@ -1,6 +1,6 @@
-import TopSection from "../../common/TopSection";
+import TopSection from "../../common/BodyOfForms/TopSection";
 import { sectionHeaders, addOnsData } from "../../../data/data";
-import AddOnsBody from "../../common/AddOnsBody";
+import AddOnsBody from "../../common/BodyOfForms/AddOnsBody";
 import { useFormContext } from "../../../context/FormContext";
 
 const AddOns = () => {

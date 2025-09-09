@@ -1,10 +1,10 @@
-import TopSection from "../../common/TopSection";
+import TopSection from "../../common/BodyOfForms/TopSection";
 import { sectionHeaders } from "../../../data/data";
 import { useFormContext } from "../../../context/FormContext";
-import SummaryBody from "../../common/SummaryBody";
+import SummaryBody from "../../common/BodyOfForms/SummaryBody";
 
 const StepSummary = () => {
-    const {state} = useFormContext();
+  const { state } = useFormContext();
   return (
     <div className="space-y-9">
       <TopSection

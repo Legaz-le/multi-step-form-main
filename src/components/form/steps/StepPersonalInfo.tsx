@@ -1,7 +1,7 @@
 import { useFormContext } from "../../../context/FormContext";
-import Forms from "../../common/FormsInfo";
+import Forms from "../../common/BodyOfForms/FormsInfo";
 import { formInfo, sectionHeaders } from "../../../data/data";
-import TopSection from "../../common/TopSection";
+import TopSection from "../../common/BodyOfForms/TopSection";
 
 const Form = () => {
   const { state } = useFormContext();
