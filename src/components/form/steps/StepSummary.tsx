@@ -1,6 +1,7 @@
 import TopSection from "../../common/TopSection";
 import { sectionHeaders } from "../../../data/data";
 import { useFormContext } from "../../../context/FormContext";
+import SummaryBody from "../../common/SummaryBody";
 
 const StepSummary = () => {
     const {state} = useFormContext();
@@ -11,8 +12,7 @@ const StepSummary = () => {
         title={sectionHeaders[state.step - 1].title}
         desc={sectionHeaders[state.step - 1].desc}
       />
-      <div>
-      </div>
+      <SummaryBody />
     </div>
   );
 };
