@@ -1,7 +1,7 @@
-import AddOns from "./steps/StepAddOns";
-import Form from "./steps/StepPersonalInfo";
-import SecondStep from "./steps/StepPlan";
-import StepSummary from "./steps/StepSummary";
+import AddOns from "./formSteps/StepAddOns";
+import Form from "./formSteps/StepPersonalInfo";
+import SecondStep from "./formSteps/StepPlan";
+import StepSummary from "./formSteps/StepSummary";
 import { useFormContext } from "../../context/FormContext";
 import NextButton from "../common/buttons/NextButton";
 import GoBackButton from "../common/buttons/GoBackButton";
