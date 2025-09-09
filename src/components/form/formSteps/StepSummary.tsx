@@ -1,7 +1,7 @@
-import TopSection from "../../common/BodyOfForms/TopSection";
-import { sectionHeaders } from "../../../data/data";
 import { useFormContext } from "../../../context/FormContext";
+import { sectionHeaders } from "../../../data/data";
 import SummaryBody from "../../common/BodyOfForms/SummaryBody";
+import TopSection from "../../common/BodyOfForms/TopSection";
 
 const StepSummary = () => {
   const { state } = useFormContext();

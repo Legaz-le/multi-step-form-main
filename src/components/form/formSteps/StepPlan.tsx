@@ -1,8 +1,8 @@
-import Option from "../../common/BodyOfForms/Option";
-import { option } from "../../../data/data";
-import TopSection from "../../common/BodyOfForms/TopSection";
-import { sectionHeaders } from "../../../data/data";
 import { useFormContext } from "../../../context/FormContext";
+import { option } from "../../../data/data";
+import { sectionHeaders } from "../../../data/data";
+import Option from "../../common/BodyOfForms/Option";
+import TopSection from "../../common/BodyOfForms/TopSection";
 
 const SecondStep = () => {
   const { state } = useFormContext();
