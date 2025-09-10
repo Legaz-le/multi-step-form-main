@@ -26,7 +26,7 @@ const SecondStep = () => {
         ))}
       </div>
       <div className="p-3 bg-Blue-50 flex-center gap-5">
-        <p className="text-Blue-950 font-[700]">Montly</p>
+        <p className="main-button">Montly</p>
         <label
           htmlFor="hs-basic-usage"
           className="relative inline-block w-11 h-5 cursor-pointer"

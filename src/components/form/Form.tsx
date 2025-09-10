@@ -21,7 +21,7 @@ const WriteSide = () => {
       <div
         className={`mt-10 ${
           CurrentStep !== Form
-            ? "flex items-center justify-between"
+            ? "flex-body"
             : "flex justify-end"
         }`}
       >
