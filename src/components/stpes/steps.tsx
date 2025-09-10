@@ -1,5 +1,6 @@
-import Step from "./Step";
 import { steps } from "../../data/data";
+
+import Step from "./Step";
 
 const StepsProcess = () => {
   return (

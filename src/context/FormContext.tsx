@@ -1,7 +1,7 @@
-/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext } from "react";
-import type { FormContextType } from "../types/types";
 import { useState } from "react";
+
+import type { FormContextType } from "../types/types";
 import type { FormState } from "../types/types";
 
 const FormContext = createContext<FormContextType | null>(null);
