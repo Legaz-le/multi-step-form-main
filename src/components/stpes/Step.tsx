@@ -3,7 +3,7 @@ import type { StepType } from "../../types/types";
 const Step = ({ number, label, desc, isFirst }: StepType) => {
   return (
     <div className={`flex  items-center  space-x-4 ${!isFirst ? "pt-5" : ""}`}>
-      <div className="w-8 h-8 rounded-full flex items-center justify-center border-1 border-White">
+      <div className="w-8 h-8 rounded-full flex-center border-1 border-White">
         <span className="text-White ">{number}</span>
       </div>
       <div>

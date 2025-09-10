@@ -9,7 +9,7 @@ const NextButton = () => {
       type="button"
       className={`${
         isLastStep ? "bg-Purple-600" : "bg-Blue-950"
-      } text-White font-[500] py-3 px-7 rounded-md hover:bg-Blue-900 float-right cursor-pointer`}
+      } next-button`}
       onClick={() => updateStep(isLastStep ? 0 : 1)}
     >
       {isLastStep ? "Confirm " : "Next Step"}

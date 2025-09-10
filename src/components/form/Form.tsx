@@ -8,7 +8,6 @@ import SecondStep from "./formSteps/StepPlan";
 import StepSummary from "./formSteps/StepSummary";
 
 
-
 const WriteSide = () => {
   const { state } = useFormContext();
   const stepsComponents = [Form, SecondStep, AddOns, StepSummary];

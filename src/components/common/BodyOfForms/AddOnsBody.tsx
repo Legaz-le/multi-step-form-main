@@ -2,8 +2,8 @@ import type { AddOnsType } from "../../../types/types";
 
 const AddOnsBody = ({ title, desc, price }: AddOnsType) => {
   return (
-    <label className="flex items-center justify-between border rounded-sm px-5 py-3  cursor-pointer hover:border-Purple-600">
-      <div className="flex items-center justify-center gap-6">
+    <label className="body">
+      <div className="flex-center gap-6">
         <label className="relative inline-flex items-center">
           <input
             type="checkbox"
@@ -16,7 +16,7 @@ const AddOnsBody = ({ title, desc, price }: AddOnsType) => {
           />
         </label>
         <div>
-          <h1 className="text-Blue-950 font-[700]">{title}</h1>
+          <h1 className="main-button">{title}</h1>
           <p className="text-Grey-500 font-[500]">{desc}</p>
         </div>
       </div>
