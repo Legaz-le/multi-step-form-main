@@ -1,29 +1,29 @@
 const SummaryBody = () => {
   return (
-    <div className="flex gap-4 flex-col">
-      <div className="bg-Blue-100 p-4 rounded-lg flex flex-col gap-4">
+    <div className="flex gap-4 flex-col ">
+      <div className="bg-Blue-100 p-4 rounded-lg flex flex-col gap-5">
         <div className="flex-body">
           <div>
-            <h3>Arcady(Montly)</h3>
-            <p>Change</p>
+            <h3 className="main-button">Arcady (Montly)</h3>
+            <p className="hover:text-Blue-950 cursor-pointer text-Grey-500 font-[500] underline">Change</p>
           </div>
-          <span>$9/mo</span>
+          <span className="main-button">$9/mo</span>
         </div>
-        <div className="border-1" />
-        <div className="">
+        <hr className=" border-Purple-200" />
+        <div className="space-y-3 mb-3">
           <div className="flex-body">
-            <p>Online service</p>
-            <span>+$1/mo</span>
+            <p className="text-Grey-500">Online service</p>
+            <span className="text-Blue-950">+$1/mo</span>
           </div>
           <div className="flex-body">
-            <p>Large storage</p>
-            <span>+$1/mo</span>
+            <p className="text-Grey-500">Large storage</p>
+            <span className="text-Blue-950">+$1/mo</span>
           </div>
         </div>
       </div>
-      <div className="bg-Blue-100 p-4 rounded-lg flex-body">
-        <p>Total(per month)</p>
-        <span>10$/mo</span>
+      <div className=" p-4 rounded-lg flex-body">
+        <p className="text-Grey-500">Total (per month)</p>
+        <span className="text-[20px] text-Purple-600 font-[700]">$10/mo</span>
       </div>
     </div>
   );

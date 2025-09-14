@@ -2,7 +2,7 @@ import type { FormType } from "../../../types/types";
 
 const Forms = ({ name, type, placeholder }: FormType) => {
   return (
-    <label className="block  cursor-pointer">
+    <label className="block cursor-pointer">
       <div className="flex items-center justify-between mt-2 mb-1">
         <p className="text-Blue-950 font-[500] text-[14px] ">{name}</p>
         <p className="text-[14px] font-[500] text-Red-500 hidden">
@@ -12,7 +12,7 @@ const Forms = ({ name, type, placeholder }: FormType) => {
       <input
         type={type}
         placeholder={placeholder}
-        className="border border-Purple-200 rounded-md p-2 w-full hover:border-Purple-600"
+        className="border border-Purple-200 rounded-md p-2 w-full hover:border-Purple-600 cursor-pointer"
       />
     </label>
   );
