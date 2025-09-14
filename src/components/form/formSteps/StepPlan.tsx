@@ -1,11 +1,17 @@
+import { useFormContext as useRHFContext } from "react-hook-form";
+
 import { useFormContext } from "../../../context/FormContext";
 import { option } from "../../../data/data";
 import { sectionHeaders } from "../../../data/data";
 import Option from "../../common/BodyOfForms/Option";
 import TopSection from "../../common/BodyOfForms/TopSection";
 
+import type { FormValues } from "../../../types/types";
+
 const SecondStep = () => {
   const { state } = useFormContext();
+  const { register, watch } = useRHFContext<FormValues>()
+  const selectedPlan = watch("plan");
 
   return (
     <section className="space-y-9 ">
@@ -22,6 +28,8 @@ const SecondStep = () => {
             alt={info.alt}
             name={info.name}
             price={info.price}
+            register={register}
+            selectedPlan={selectedPlan}
           />
         ))}
       </div>
