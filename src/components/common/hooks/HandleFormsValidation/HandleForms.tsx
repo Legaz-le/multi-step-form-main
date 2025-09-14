@@ -6,9 +6,9 @@ export const HandleForms = ({ children }: { children: React.ReactNode }) => {
   const methods = useForm<FormValues>({
     mode: "onTouched",
     defaultValues: {
-      Name: "",
-      Email: "",
-      Phone: "",
+      name: "",
+      email: "",
+      phone: "",
       plan: "",
       addOns: [],
       

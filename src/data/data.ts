@@ -4,6 +4,7 @@ import type {
   StepType,
   AddOnsType,
   SectionType,
+  FormValues
 } from "../types/types";
 
 export const steps: StepType[] = [
@@ -13,15 +14,17 @@ export const steps: StepType[] = [
   { number: 4, label: "STEP 4", desc: "SUMMARY" },
 ];
 
-export const formInfo: FormType[] = [
-  { name: "Name", type: "text", placeholder: "e.g. Stephen King" },
+export const formInfo: FormType<keyof FormValues>[] = [
+  { key:"name", label: "Name", type: "text", placeholder: "e.g. Stephen King" },
   {
-    name: "Email Address",
+    key:"email",
+    label: "Email Address",
     type: "email",
     placeholder: "e.g. stephenking@lorem.com",
   },
   {
-    name: "Phone Number",
+    key:"phone",
+    label: "Phone Number",
     type: "tel",
     placeholder: "e.g. +1 234 567 890",
   },

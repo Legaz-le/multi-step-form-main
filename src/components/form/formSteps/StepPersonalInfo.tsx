@@ -21,8 +21,9 @@ const Form = () => {
       <form className="space-y-3">
         {formInfo.map((info) => (
           <Forms
-            key={info.name}
-            name={info.name}
+            key={info.key}
+            fieldKey={info.key as keyof FormValues}
+            label={info.label}
             type={info.type}
             placeholder={info.placeholder}
             register={register}

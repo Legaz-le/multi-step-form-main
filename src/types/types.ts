@@ -5,12 +5,6 @@ export type OptionType = {
   price: string;
 };
 
-export type FormType = {
-  name: string;
-  type: string;
-  placeholder: string;
-};
-
 export type StepType = {
   number: number;
   label: string;
@@ -40,9 +34,16 @@ export type FormContextType = {
 };
 
 export type FormValues = {
-  Name: string;
-  Email: string;
-  Phone: string;
+  name: string;
+  email : string;
+  phone: string;
   plan: string;
   addOns: string[];
+};
+
+export type FormType<K extends keyof FormValues = keyof FormValues> = {
+  key:string;
+  label: string;
+  type: string;
+  placeholder: string;
 };

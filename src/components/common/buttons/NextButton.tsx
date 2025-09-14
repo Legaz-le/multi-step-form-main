@@ -12,7 +12,7 @@ const NextButton = () => {
   const handleNext = async () => {
     let fieldsToValidate: (keyof FormValues)[] = [];
 
-    if (state.step === 1) fieldsToValidate = ["Name", "Email", "Phone"];
+    if (state.step === 1) fieldsToValidate = ["name", "email", "phone"];
     if (state.step === 2) fieldsToValidate = ["plan"];
     if (state.step === 3) fieldsToValidate = ["addOns"];
 
