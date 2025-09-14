@@ -13,6 +13,7 @@ const Forms = ({ name, type, placeholder }: FormType) => {
         type={type}
         placeholder={placeholder}
         className="border border-Purple-200 rounded-md p-2 w-full hover:border-Purple-600 cursor-pointer"
+        required
       />
     </label>
   );
