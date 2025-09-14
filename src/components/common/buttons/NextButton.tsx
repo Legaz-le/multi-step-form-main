@@ -1,8 +1,23 @@
+import { useFormContext as useRHFContext } from "react-hook-form";
+
 import { useFormContext } from "../../../context/FormContext";
 
 const NextButton = () => {
   const { updateStep, state } = useFormContext();
+  const { trigger } = useRHFContext();
   const isLastStep = state.step === 4;
+
+  const handleNext = async () => {
+    let fieldsToValidate: string[] = [];
+
+    if (state.step === 1) fieldsToValidate = ["Name", "Email Address", "Phone Number"];
+    if (state.step === 2) fieldsToValidate = ["plan"];
+    if (state.step === 3) fieldsToValidate = ["addOns"];
+
+    const valid = await trigger(fieldsToValidate);
+    if (valid) updateStep(isLastStep ? 0 : 1); 
+  };
+
 
   return (
     <button
@@ -10,7 +25,7 @@ const NextButton = () => {
       className={`${
         isLastStep ? "bg-Purple-600" : "bg-Blue-950"
       } next-button`}
-      onClick={() => updateStep(isLastStep ? 0 : 1)}
+      onClick={handleNext}
     >
       {isLastStep ? "Confirm " : "Next Step"}
     </button>

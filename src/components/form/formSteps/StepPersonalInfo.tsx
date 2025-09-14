@@ -1,3 +1,5 @@
+import { useFormContext as useRHFContext } from "react-hook-form";
+
 import { useFormContext } from "../../../context/FormContext";
 import { formInfo, sectionHeaders } from "../../../data/data";
 import Forms from "../../common/BodyOfForms/FormsInfo";
@@ -5,6 +7,7 @@ import TopSection from "../../common/BodyOfForms/TopSection";
 
 const Form = () => {
   const { state } = useFormContext();
+  const { register, formState: { errors } } = useRHFContext();
 
   return (
     <section className="space-y-9 ">
@@ -20,6 +23,8 @@ const Form = () => {
             name={info.name}
             type={info.type}
             placeholder={info.placeholder}
+            register={register}
+            errors={errors}
           />
         ))}
       </form>

@@ -1,8 +1,7 @@
 import { createContext, useContext } from "react";
 import { useState } from "react";
 
-import type { FormContextType } from "../types/types";
-import type { FormState } from "../types/types";
+import type { FormContextType, FormState } from "../types/types";
 
 const FormContext = createContext<FormContextType | null>(null);
 
