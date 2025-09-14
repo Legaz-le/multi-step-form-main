@@ -2,15 +2,17 @@ import { useFormContext as useRHFContext } from "react-hook-form";
 
 import { useFormContext } from "../../../context/FormContext";
 
+import type { FormValues } from "../../../types/types";
+
 const NextButton = () => {
   const { updateStep, state } = useFormContext();
   const { trigger } = useRHFContext();
   const isLastStep = state.step === 4;
 
   const handleNext = async () => {
-    let fieldsToValidate: string[] = [];
+    let fieldsToValidate: (keyof FormValues)[] = [];
 
-    if (state.step === 1) fieldsToValidate = ["Name", "Email Address", "Phone Number"];
+    if (state.step === 1) fieldsToValidate = ["Name", "Email", "Phone"];
     if (state.step === 2) fieldsToValidate = ["plan"];
     if (state.step === 3) fieldsToValidate = ["addOns"];
 

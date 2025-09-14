@@ -5,9 +5,11 @@ import { formInfo, sectionHeaders } from "../../../data/data";
 import Forms from "../../common/BodyOfForms/FormsInfo";
 import TopSection from "../../common/BodyOfForms/TopSection";
 
+import type { FormValues } from "../../../types/types";
+
 const Form = () => {
   const { state } = useFormContext();
-  const { register, formState: { errors } } = useRHFContext();
+  const { register, formState: { errors } } = useRHFContext<FormValues>();
 
   return (
     <section className="space-y-9 ">

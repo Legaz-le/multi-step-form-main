@@ -38,3 +38,11 @@ export type FormContextType = {
   state: FormState;
   updateStep: (delta:number) => void;
 };
+
+export type FormValues = {
+  Name: string;
+  Email: string;
+  Phone: string;
+  plan: string;
+  addOns: string[];
+};
