@@ -10,7 +10,7 @@ import type { FormValues } from "../../../types/types";
 
 const SecondStep = () => {
   const { state } = useFormContext();
-  const { register, watch } = useRHFContext<FormValues>()
+  const { register, watch, formState: { errors } } = useRHFContext<FormValues>()
   const selectedPlan = watch("plan");
 
   return (
@@ -32,6 +32,9 @@ const SecondStep = () => {
             selectedPlan={selectedPlan}
           />
         ))}
+        {errors.plan && (
+        <p className="text-Red-500 text-sm">{errors.plan.message}</p>
+      )}
       </div>
       <div className="p-3 bg-Blue-50 flex-center gap-5">
         <p className="main-button">Montly</p>
