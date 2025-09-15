@@ -1,8 +1,7 @@
 import { useFormContext as useRHFContext } from "react-hook-form";
 
 import { useFormContext } from "../../../context/FormContext";
-import { option } from "../../../data/data";
-import { sectionHeaders } from "../../../data/data";
+import { option, sectionHeaders } from "../../../data/data";
 import Option from "../../common/BodyOfForms/Option";
 import TopSection from "../../common/BodyOfForms/TopSection";
 
@@ -10,8 +9,15 @@ import type { FormValues } from "../../../types/types";
 
 const SecondStep = () => {
   const { state } = useFormContext();
-  const { register, watch, formState: { errors } } = useRHFContext<FormValues>()
+  const {
+    register,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useRHFContext<FormValues>();
+
   const selectedPlan = watch("plan");
+  const billing = watch("billing", "monthly");
 
   return (
     <section className="space-y-9 ">
@@ -30,23 +36,30 @@ const SecondStep = () => {
             price={info.price}
             register={register}
             selectedPlan={selectedPlan}
+            billing={billing}
           />
         ))}
         {errors.plan && (
-        <p className="text-Red-500 text-sm">{errors.plan.message}</p>
-      )}
+          <p className="text-Red-500 text-sm">{errors.plan.message}</p>
+        )}
       </div>
       <div className="p-3 bg-Blue-50 flex-center gap-5">
-        <p className="main-button">Montly</p>
+        <p className={`font-[700] ${billing === "monthly" ? "text-Blue-950" : "text-Grey-500"}`}>Montly</p>
         <label
           htmlFor="hs-basic-usage"
           className="relative inline-block w-11 h-5 cursor-pointer"
         >
-          <input type="checkbox" id="hs-basic-usage" className="peer sr-only" />
+          <input
+            type="checkbox"
+            checked={billing === "yearly"}
+            onChange={() => setValue("billing", billing === "monthly" ? "yearly" : "monthly")}
+            id="hs-basic-usage"
+            className="peer sr-only"
+          />
           <span className="absolute inset-0 bg-Blue-950 rounded-full transition-color duration-200 ease-in-out" />
           <span className="toggle"></span>
         </label>
-        <p className="text-Grey-500 font-[400]">Yearly</p>
+        <p className={`font-[700] ${billing === "yearly" ? "text-Blue-950" : "text-Grey-500"}`}>Yearly</p>
       </div>
     </section>
   );

@@ -35,19 +35,28 @@ export const option: OptionType[] = [
     img: "/images/icon-arcade.svg",
     alt: "arcade-icon",
     name: "Arcade",
-    price: "$90/yr",
+    price: {
+      monthly: "$9/mo",
+      yearly: "$90/yr",
+    },
   },
   {
     img: "/images/icon-advanced.svg",
     alt: "advanced-icon",
     name: "Advanced",
-    price: "$120/yr",
+    price: {
+      monthly: "$12/mo",
+      yearly: "$120/yr",
+    },
   },
   {
     img: "/images/icon-pro.svg",
     alt: "pro-icon",
     name: "Pro",
-    price: "$150/yr",
+    price: {
+      monthly: "$15/mo",
+      yearly: "$150/yr",
+    },
   },
 ];
 

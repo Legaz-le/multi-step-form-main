@@ -2,7 +2,10 @@ export type OptionType = {
   img: string;
   alt: string;
   name: string;
-  price: string;
+  price: {
+    monthly:string;
+    yearly: string;
+  }
 };
 
 export type StepType = {
@@ -39,6 +42,7 @@ export type FormValues = {
   phone: string;
   plan: string;
   addOns: string[];
+  billing: "monthly" | "yearly";
 };
 
 export type FormType<K extends keyof FormValues = keyof FormValues> = {
