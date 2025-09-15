@@ -3,9 +3,9 @@ export type OptionType = {
   alt: string;
   name: string;
   price: {
-    monthly:string;
+    monthly: string;
     yearly: string;
-  }
+  };
 };
 
 export type StepType = {
@@ -18,13 +18,16 @@ export type StepType = {
 export type SectionType = {
   title: string;
   desc: string;
-  stepNumber:number;
+  stepNumber: number;
 };
 
-export type AddOnsType =  {
+export type AddOnsType = {
   title: string;
   desc: string;
-  price: string;
+  price: {
+    monthly: string;
+    yearly: string;
+  };
 };
 
 export type FormState = {
@@ -33,12 +36,12 @@ export type FormState = {
 
 export type FormContextType = {
   state: FormState;
-  updateStep: (delta:number) => void;
+  updateStep: (delta: number) => void;
 };
 
 export type FormValues = {
   name: string;
-  email : string;
+  email: string;
   phone: string;
   plan: string;
   addOns: string[];
@@ -46,7 +49,7 @@ export type FormValues = {
 };
 
 export type FormType<K extends keyof FormValues = keyof FormValues> = {
-  key:string;
+  key: string;
   label: string;
   type: string;
   placeholder: string;

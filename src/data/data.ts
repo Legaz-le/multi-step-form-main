@@ -4,7 +4,7 @@ import type {
   StepType,
   AddOnsType,
   SectionType,
-  FormValues
+  FormValues,
 } from "../types/types";
 
 export const steps: StepType[] = [
@@ -15,15 +15,20 @@ export const steps: StepType[] = [
 ];
 
 export const formInfo: FormType<keyof FormValues>[] = [
-  { key:"name", label: "Name", type: "text", placeholder: "e.g. Stephen King" },
   {
-    key:"email",
+    key: "name",
+    label: "Name",
+    type: "text",
+    placeholder: "e.g. Stephen King",
+  },
+  {
+    key: "email",
     label: "Email Address",
     type: "email",
     placeholder: "e.g. stephenking@lorem.com",
   },
   {
-    key:"phone",
+    key: "phone",
     label: "Phone Number",
     type: "tel",
     placeholder: "e.g. +1 234 567 890",
@@ -64,13 +69,20 @@ export const addOnsData: AddOnsType[] = [
   {
     title: "Online service",
     desc: "Access to multiplayer games",
-    price: "+$1/mo",
+    price: {
+      monthly: "$1/mo",
+      yearly: "$10/yr",
+    },
   },
-  { title: "Large storage", desc: "Extra 1TB of cloud save", price: "+$2/mo" },
+  {
+    title: "Large storage",
+    desc: "Extra 1TB of cloud save",
+    price: { monthly: "$2/mo", yearly: "$20/yr", },
+  },
   {
     title: "Customizable profile",
     desc: "Custom theme on your profile",
-    price: "+$2/mo",
+    price: { monthly: "$2/mo", yearly: "$20/yr" },
   },
 ];
 
@@ -85,7 +97,7 @@ export const sectionHeaders: SectionType[] = [
     title: "Select your plan",
     desc: "You have the option of monthly or yearly billing.",
   },
-   {
+  {
     stepNumber: 3,
     title: "Pick add-ons",
     desc: "Add-ons help enhance your gaming experience.",

@@ -1,3 +1,5 @@
+import {useFormContext as useRHFContext} from "react-hook-form";
+
 import type { AddOnsType, FormValues } from "../../../types/types";
 import type { UseFormRegister } from "react-hook-form";
 
@@ -14,6 +16,8 @@ const AddOnsBody = ({
   selectedPlan,
 }: addOnsProps) => {
   const services = selectedPlan?.includes(title);
+  const { watch } = useRHFContext<FormValues>();
+  const billing = watch("billing", "monthly");
   return (
     <label
       className={`body ${
@@ -44,7 +48,7 @@ const AddOnsBody = ({
           <p className="text-Grey-500 font-[500]">{desc}</p>
         </div>
       </div>
-      <span className="text-Purple-600 font-[500]">{price}</span>
+      <span className="text-Purple-600 font-[500]">{billing === "monthly" ? price.monthly : price.yearly}</span>
     </label>
   );
 };

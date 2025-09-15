@@ -44,7 +44,7 @@ const SecondStep = () => {
         )}
       </div>
       <div className="p-3 bg-Blue-50 flex-center gap-5">
-        <p className={`font-[700] ${billing === "monthly" ? "text-Blue-950" : "text-Grey-500"}`}>Montly</p>
+        <p className={` ${billing === "monthly" ? "text-Blue-950" : "text-Grey-500"}`}>Montly</p>
         <label
           htmlFor="hs-basic-usage"
           className="relative inline-block w-11 h-5 cursor-pointer"
