@@ -12,7 +12,7 @@ const Form = () => {
   const { register, formState: { errors } } = useRHFContext<FormValues>();
 
   return (
-    <section className="space-y-9 ">
+    <section className="md:space-y-9 space-y-3">
       <TopSection
         stepNumber={sectionHeaders[state.step - 1].stepNumber}
         title={sectionHeaders[state.step - 1].title}

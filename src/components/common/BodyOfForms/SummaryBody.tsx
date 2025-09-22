@@ -36,9 +36,9 @@ const SummaryBody = () => {
             <h3 className="main-button">
               {values.plan} ({billing})
             </h3>
-            <p className="hover:text-Blue-950 cursor-pointer text-Grey-500 font-[500] underline">
+            <button className="hover:text-Blue-950 cursor-pointer text-Grey-500 font-[500] underline">
               Change
-            </p>
+            </button>
           </div>
           <span className="main-button">${planPrice}{billing === "monthly" ? "/mo" : "/yr"}</span>
         </div>

@@ -6,7 +6,7 @@ import TopSection from "../../common/BodyOfForms/TopSection";
 const StepSummary = () => {
   const { state } = useFormContext();
   return (
-    <div className="space-y-9">
+    <div className="md:space-y-9 space-y-3">
       <TopSection
         stepNumber={sectionHeaders[state.step - 1].stepNumber}
         title={sectionHeaders[state.step - 1].title}

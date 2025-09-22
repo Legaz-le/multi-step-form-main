@@ -20,13 +20,13 @@ const SecondStep = () => {
   const billing = watch("billing", "monthly");
 
   return (
-    <section className="space-y-9 ">
+    <section className="md:space-y-9 space-y-3">
       <TopSection
         stepNumber={sectionHeaders[state.step - 1].stepNumber}
         title={sectionHeaders[state.step - 1].title}
         desc={sectionHeaders[state.step - 1].desc}
       />
-      <div className="grid grid-cols-3 gap-5">
+      <div className="md:grid grid-cols-3 flex flex-col gap-2">
         {option.map((info) => (
           <Option
             key={info.name}

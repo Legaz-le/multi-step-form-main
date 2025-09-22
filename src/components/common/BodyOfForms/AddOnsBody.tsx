@@ -24,7 +24,7 @@ const AddOnsBody = ({
         services ? "border-Purple-600" : "border-gray-300"
       }`}
     >
-      <div className="flex-center gap-6">
+      <div className="flex-center md:gap-6 gap-2">
         <div className="relative inline-flex items-center">
           <input
             type="checkbox"
@@ -44,11 +44,11 @@ const AddOnsBody = ({
           />
         </div>
         <div>
-          <h1 className="main-button">{title}</h1>
-          <p className="text-Grey-500 font-[500]">{desc}</p>
+          <h1 className="main-button text-md">{title}</h1>
+          <p className="text-Grey-500 font-[500] text-[13px]">{desc}</p>
         </div>
       </div>
-      <span className="text-Purple-600 font-[500]">{billing === "monthly" ? price.monthly : price.yearly}</span>
+      <span className="text-Purple-600 font-[500] text-sm">{billing === "monthly" ? price.monthly : price.yearly}</span>
     </label>
   );
 };
