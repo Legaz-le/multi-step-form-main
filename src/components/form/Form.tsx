@@ -1,4 +1,5 @@
 import { useFormContext } from "../../context/FormContext";
+import Confrimpage from "../common/BodyOfForms/Confrimpage";
 import GoBackButton from "../common/buttons/GoBackButton";
 import NextButton from "../common/buttons/NextButton";
 
@@ -9,11 +10,11 @@ import StepSummary from "./formSteps/StepSummary";
 
 const WriteSide = () => {
   const { state } = useFormContext();
-  const stepsComponents = [Form, SecondStep, AddOns, StepSummary];
+  const stepsComponents = [Form, SecondStep, AddOns, StepSummary, Confrimpage];
   const CurrentStep = stepsComponents[state.step - 1];
 
   return (
-    <div className="md:h-[410px] h-screen  md:w-md bg-Blue-200 md:bg-White flex flex-col justify-end md:block">
+    <div className={`md:h-[410px] h-screen  md:w-md bg-Blue-200 md:bg-White flex flex-col justify-end ${CurrentStep !== Confrimpage ? "md:block" : ""}`}>
       <div className="bg-Blue-100   md:bg-white ">
         <div className="absolute md:static  top-19 md:bottom-0  md:p-0 md:m-0 p-6 m-5  bg-White rounded-lg">
         <CurrentStep />
@@ -24,8 +25,8 @@ const WriteSide = () => {
           CurrentStep !== Form ? "justify-between items-center" : "justify-end"
         }`}
       >
-        {CurrentStep !== Form && <GoBackButton />}
-        <NextButton />
+        {CurrentStep !== Form && CurrentStep !== Confrimpage && <GoBackButton />}
+        {CurrentStep !== Confrimpage && <NextButton />}
       </div>
     </div>
   );

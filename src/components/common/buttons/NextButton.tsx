@@ -7,7 +7,7 @@ import type { FormValues } from "../../../types/types";
 const NextButton = () => {
   const { updateStep, state } = useFormContext();
   const { trigger } = useRHFContext();
-  const isLastStep = state.step === 4;
+  const isLastStep = state.step === 5;
 
   const handleNext = async () => {
     let fieldsToValidate: (keyof FormValues)[] = [];
