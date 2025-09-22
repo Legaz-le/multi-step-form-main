@@ -4,7 +4,7 @@ import type { FormType, FormValues } from "../../../types/types";
 import type { FieldErrors, UseFormRegister} from "react-hook-form";
 
 
-interface FormsProps<K extends keyof FormValues> extends Omit<FormType<K>, "key"> {
+interface FormsProps<K extends keyof FormValues> extends Omit<FormType, "key"> {
   fieldKey: K;
   register: UseFormRegister<FormValues>;
   errors?: FieldErrors<FormValues>;
@@ -25,7 +25,7 @@ const Forms = <K extends keyof FormValues>({ fieldKey, label, type, placeholder,
         type={type}
         placeholder={placeholder}
         className={`border  rounded-md p-2 w-full hover:border-Purple-600 cursor-pointer ${errors?.[fieldKey] ? "border-Red-500" : "border-Purple-200"}`}
-        {...register(fieldKey, getValidationRules(fieldKey, type)as K)}
+        {...register(fieldKey, getValidationRules(fieldKey, type) as K)}
       />
     </label>
   );

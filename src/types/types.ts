@@ -48,7 +48,7 @@ export type FormValues = {
   billing: "monthly" | "yearly";
 };
 
-export type FormType<K extends keyof FormValues = keyof FormValues> = {
+export type FormType = {
   key: string;
   label: string;
   type: string;
