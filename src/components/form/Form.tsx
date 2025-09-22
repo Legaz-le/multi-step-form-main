@@ -14,7 +14,7 @@ const WriteSide = () => {
   const CurrentStep = stepsComponents[state.step - 1];
 
   return (
-    <div className={`md:h-[410px] h-screen  md:w-md bg-Blue-200 md:bg-White flex flex-col justify-end ${CurrentStep !== Confrimpage ? "md:block" : ""}`}>
+    <div className={`md:h-[410px] h-screen  md:w-md bg-Blue-200 md:bg-White flex flex-col justify-end ${CurrentStep !== Confrimpage ? "md:block" : " "}`}>
       <div className="bg-Blue-100   md:bg-white ">
         <div className="absolute md:static  top-19 md:bottom-0  md:p-0 md:m-0 p-6 m-5  bg-White rounded-lg">
         <CurrentStep />

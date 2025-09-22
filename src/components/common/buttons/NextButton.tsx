@@ -26,7 +26,7 @@ const NextButton = () => {
       type="button"
       className={`${
         isLastStep ? "bg-Purple-600" : "bg-Blue-950"
-      } next-button`}
+      } next-button hover:bg-Purple-600`}
       onClick={handleNext}
     >
       {isLastStep ? "Confirm " : "Next Step"}

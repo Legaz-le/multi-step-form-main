@@ -45,5 +45,5 @@
 }
 
 .next-button {
-    @apply text-White font-[500] py-3 px-7 rounded-md  float-right cursor-pointer;
+    @apply text-White font-[500] py-3 px-7 rounded-md   float-right cursor-pointer;
 }
