@@ -5,14 +5,15 @@ import { option, addOnsData } from "../../../data/data";
 import type { FormValues } from "../../../types/types";
 
 const SummaryBody = () => {
-  const { getValues, watch } = useRHFContext<FormValues>();
+  const { getValues, setValue, watch } = useRHFContext<FormValues>();
   const values = getValues();
   const plan = option.find((p) => p.name === values.plan);
   const billing = watch("billing", "monthly");
-  const planPrice =
-    Number(billing === "monthly"
-      ? (plan?.price.monthly.replace(/[^0-9]/g, "")) || 0
-      : (plan?.price.yearly.replace(/[^0-9]/g, "")) || 0);
+  const planPrice = Number(
+    billing === "monthly"
+      ? plan?.price.monthly.replace(/[^0-9]/g, "") || 0
+      : plan?.price.yearly.replace(/[^0-9]/g, "") || 0
+  );
   const selectedAddOns = addOnsData.filter((a) =>
     values.addOns.includes(a.title)
   );
@@ -36,11 +37,22 @@ const SummaryBody = () => {
             <h3 className="main-button">
               {values.plan} ({billing})
             </h3>
-            <button className="hover:text-Blue-950 cursor-pointer text-Grey-500 font-[500] underline">
+            <button
+            onClick={() =>
+                setValue(
+                  "billing",
+                  billing === "monthly" ? "yearly" : "monthly"
+                )
+              }
+              className="hover:text-Blue-950 cursor-pointer text-Grey-500 font-[500] underline"
+            >
               Change
             </button>
           </div>
-          <span className="main-button">${planPrice}{billing === "monthly" ? "/mo" : "/yr"}</span>
+          <span className="main-button">
+            ${planPrice}
+            {billing === "monthly" ? "/mo" : "/yr"}
+          </span>
         </div>
         <hr className=" border-Purple-200" />
         <div className="space-y-3 mb-3">
