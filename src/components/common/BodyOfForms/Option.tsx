@@ -15,6 +15,7 @@ export  const Option = ({ img, alt, name, price, register, selectedPlan, billing
         value={name} 
         {...register("plan", { required: "Please select a plan" })}
         className="hidden" 
+        aria-label={name}
       />
       <img src={img} alt={alt} />
       <div className="w-[100px]">
