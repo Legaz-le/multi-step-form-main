@@ -16,6 +16,25 @@ async function goToPlanStep(page: Page) {
   await page.getByRole("button", { name: "Next Step" }).click();
 }
 
+async function goToAddOnStep(page: Page) {
+  await goToPlanStep(page);
+
+  await page.getByText("Arcade").click();
+
+  await page.getByRole("button", { name: "Next Step" }).click();
+}
+
+async function goToConfrimStep(page: Page) {
+  await goToPlanStep(page);
+  await goToAddOnStep(page);
+  await expect(
+    page.getByRole("heading", { name: "Pick add-ons" })
+  ).toBeVisible();
+
+  await page.getByText("Online service").click();
+  await page.getByRole("button", { name: "Next Step" }).click();
+}
+
 test("fill the first inputs", async ({ page }) => {
   await goToPlanStep(page);
 
@@ -25,15 +44,23 @@ test("fill the first inputs", async ({ page }) => {
 });
 
 test("choose plan", async ({ page }) => {
-  await goToPlanStep(page);
-
-  await expect(
-    page.getByRole("heading", { name: "Select your plan" })
-  ).toBeVisible();
-
-  await page.getByText("Arcade").click();
-  await page.getByRole("button", { name: "Next Step" }).click();
+  await goToAddOnStep(page);
   await expect(
     page.getByRole("heading", { name: "Pick add-ons" })
   ).toBeVisible();
 });
+
+test("adds-ons section additional services", async ({ page }) => {
+  await goToConfrimStep(page);
+  await expect(
+    page.getByRole("heading", { name: "Finishing up" })
+  ).toBeVisible();
+});
+
+test("Confrim last page", async({page})=> {
+  await goToConfrimStep(page);
+  await page.getByRole("button", { name: "Next Step" }).click();
+   await expect(
+    page.getByRole("heading", { name: "Thank you" })
+  ).toBeVisible();
+})

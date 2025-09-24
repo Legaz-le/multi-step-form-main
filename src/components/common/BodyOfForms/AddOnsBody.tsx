@@ -29,6 +29,7 @@ const AddOnsBody = ({
           <input
             type="checkbox"
             value={title}
+            aria-label={title}
             className="peer appearance-none  w-4.5 h-4.5 border rounded-sm checked:bg-Purple-600"
             {...register("addOns",
             {
