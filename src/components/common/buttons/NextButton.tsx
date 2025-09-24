@@ -8,6 +8,7 @@ const NextButton = () => {
   const { updateStep, state } = useFormContext();
   const { trigger } = useRHFContext();
   const isLastStep = state.step === 5;
+  const lastPage = state.step === 4;
 
   const handleNext = async () => {
     let fieldsToValidate: (keyof FormValues)[] = [];
@@ -29,7 +30,7 @@ const NextButton = () => {
       } next-button hover:bg-Purple-600`}
       onClick={handleNext}
     >
-      {isLastStep ? "Confirm " : "Next Step"}
+      {lastPage ? "Confirm " : "Next Step"}
     </button>
   );
 };
