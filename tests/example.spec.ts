@@ -1,24 +1,15 @@
 import { test, expect, type Page } from "@playwright/test";
 
-const TODO_ITEMS = [
-  "buy some cheese",
-  "abylaikhan@gmail.com",
-  "+77571353081",
-] as const;
+import {
+  REQUIRED_FIELDS,
+  INVALID_EMAIL,
+  INVALID_PHONE_NUMBER,
+} from "./test.data";
 
-const REQUIRED_FIELDS = [
-  { label: "Name", value: TODO_ITEMS[0] },
-  { label: "Email Address", value: TODO_ITEMS[1] },
-  { label: "Phone Number", value: TODO_ITEMS[2] },
-];
-
-const INVALID_EMAIL = [
-  "@Clearout.io",
-  "John.doesocialfrontier.com",
-  "MaryLopez12@.com",
-];
-
-const INVALID_PHONE_NUMBER = ["+31fgf6464w54", "1-555-555-1212", "+5464654"];
+interface RequiredField {
+  label: string;
+  value: string;
+}
 
 async function goToForm(page: Page) {
   await page.goto("http://localhost:5173");
@@ -26,11 +17,6 @@ async function goToForm(page: Page) {
 
 async function Button(page: Page) {
   await page.getByRole("button", { name: "Next Step" }).click();
-}
-
-interface RequiredField {
-  label: string;
-  value: string;
 }
 
 async function runInvalidFieldTests(
@@ -125,3 +111,5 @@ test.describe("invalid value", () => {
     "Please enter a valid phone number"
   );
 });
+
+// Navigation
