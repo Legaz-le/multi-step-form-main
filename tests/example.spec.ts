@@ -6,6 +6,8 @@ import {
   INVALID_PHONE_NUMBER,
 } from "./test.data";
 
+import { addOnsData } from "../src/data/data";
+
 interface RequiredField {
   label: string;
   value: string;
@@ -19,7 +21,7 @@ async function Button(page: Page) {
   await page.getByRole("button", { name: "Next Step" }).click();
 }
 
-async function FillingInputs(page: Page){
+async function FillingInputs(page: Page) {
   for (const value of REQUIRED_FIELDS) {
     await page.getByLabel(value.label).fill(value.value);
   }
@@ -139,4 +141,41 @@ test("Double click Next Step button", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "Pick add-ons" })
   ).not.toBeVisible();
+});
+
+// Data Integrity
+
+test("check plan is shown in confirm page", async ({ page }) => {
+  await goToForm(page);
+
+  await FillingInputs(page);
+  await Button(page);
+
+  await page.getByText("Arcade").click();
+  await Button(page);
+
+  await page.getByText("Online service").click();
+  await Button(page);
+
+  await expect(page.getByRole("heading", { name: "Arcade" })).toBeVisible();
+});
+
+test("select and unselect add-ons", async ({ page }) => {
+  await goToForm(page);
+
+  await FillingInputs(page);
+  await Button(page);
+
+  await page.getByText("Arcade").click();
+  await Button(page);
+
+  for (const addons of addOnsData) {
+    const checkbox = page.getByLabel(addons.title);
+
+    await checkbox.check({ force: true });
+    await expect(checkbox).toBeChecked();
+    
+    await checkbox.uncheck({ force: true });
+    await expect(checkbox).not.toBeChecked();
+  }
 });
