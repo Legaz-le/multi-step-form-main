@@ -1,3 +1,5 @@
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+
 import type { FormValues } from "../../types/types";
 import type { RegisterOptions, Path } from "react-hook-form";
 
@@ -14,13 +16,20 @@ export const getValidationRules = (fieldName: Path<FormValues>, type: string): R
   }
 
   if (type === "tel") {
-    rules.pattern = {
-      value: /^[0-9+\-\s()]+$/,
-      message: "Please enter a valid phone number",
-    };
-    rules.minLength = { value: 7, message: "Phone number is too short" };
-    rules.maxLength = { value: 15, message: "Phone number is too long" };
+  rules.validate = (value: string | string[] ) => {
+    if (typeof value !== "string") {
+    return "Please enter a valid phone number"; 
   }
+  
+  const phoneNumber = parsePhoneNumberFromString(value);
+
+  if (!phoneNumber || !phoneNumber.isValid()) {
+    return "Please enter a valid phone number"; 
+  }
+
+    return true;
+  };
+}
   
 
   return rules;

@@ -3,7 +3,7 @@ import { test, expect, type Page } from "@playwright/test";
 const TODO_ITEMS = [
   "buy some cheese",
   "abylaikhan@gmail.com",
-  "+775781568",
+  "+77571353081",
 ] as const;
 
 const REQUIRED_FIELDS = [
@@ -12,12 +12,47 @@ const REQUIRED_FIELDS = [
   { label: "Phone Number", value: TODO_ITEMS[2] },
 ];
 
+const INVALID_EMAIL = [
+  "@Clearout.io",
+  "John.doesocialfrontier.com",
+  "MaryLopez12@.com",
+];
+
+const INVALID_PHONE_NUMBER = ["+31fgf6464w54", "1-555-555-1212", "+5464654"];
+
 async function goToForm(page: Page) {
   await page.goto("http://localhost:5173");
 }
 
 async function Button(page: Page) {
   await page.getByRole("button", { name: "Next Step" }).click();
+}
+
+interface RequiredField {
+  label: string;
+  value: string;
+}
+
+async function runInvalidFieldTests(
+  fieldLabel: string,
+  invalidValues: string[],
+  errorMessage: string
+): Promise<void> {
+  for (const field of invalidValues) {
+    test(`invalid ${fieldLabel} ${field}`, async ({ page }: { page: Page }) => {
+      await goToForm(page);
+      for (const value of REQUIRED_FIELDS as RequiredField[]) {
+        if (fieldLabel !== value.label) {
+          await page.getByLabel(value.label).fill(value.value);
+        } else {
+          await page.getByLabel(value.label).fill(field);
+        }
+      }
+      await Button(page);
+      const errors = page.locator(`text=${errorMessage}`);
+      await expect(errors.first()).toBeVisible();
+    });
+  }
 }
 
 test("complete multi-step form and reach Thank You page", async ({ page }) => {
@@ -53,7 +88,7 @@ test.describe("Required Fields Validation", () => {
         }
       }
 
-      await page.getByRole("button", { name: "Next Step" }).click();
+      await Button(page);
 
       const errors = page.locator("text=This field is required");
       await expect(errors).toHaveCount(1);
@@ -76,4 +111,17 @@ test.describe("Required Fields Validation", () => {
       await expect(errors.nth(i)).toBeVisible();
     }
   });
+});
+
+test.describe("invalid value", () => {
+  runInvalidFieldTests(
+    "Email Address",
+    INVALID_EMAIL,
+    "Please enter a valid email address"
+  );
+  runInvalidFieldTests(
+    "Phone Number",
+    INVALID_PHONE_NUMBER,
+    "Please enter a valid phone number"
+  );
 });
