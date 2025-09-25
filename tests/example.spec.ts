@@ -19,6 +19,12 @@ async function Button(page: Page) {
   await page.getByRole("button", { name: "Next Step" }).click();
 }
 
+async function FillingInputs(page: Page){
+  for (const value of REQUIRED_FIELDS) {
+    await page.getByLabel(value.label).fill(value.value);
+  }
+}
+
 async function runInvalidFieldTests(
   fieldLabel: string,
   invalidValues: string[],
@@ -44,11 +50,7 @@ async function runInvalidFieldTests(
 test("complete multi-step form and reach Thank You page", async ({ page }) => {
   await goToForm(page);
 
-  for (const value of REQUIRED_FIELDS) {
-    if (value.label === value.label) {
-      await page.getByLabel(value.label).fill(value.value);
-    }
-  }
+  await FillingInputs(page);
   await Button(page);
 
   await page.getByText("Arcade").click();
@@ -113,3 +115,28 @@ test.describe("invalid value", () => {
 });
 
 // Navigation
+
+test("Check input value kept after clicking back button", async ({ page }) => {
+  await goToForm(page);
+  await FillingInputs(page);
+
+  await Button(page);
+  await page.getByRole("button", { name: "Go Back" }).click();
+
+  for (const value of REQUIRED_FIELDS) {
+    await expect(page.getByLabel(value.label)).toHaveValue(value.value);
+  }
+});
+
+test("Double click Next Step button", async ({ page }) => {
+  await goToForm(page);
+  await FillingInputs(page);
+  await page.getByRole("button", { name: "Next Step" }).dblclick();
+
+  await expect(
+    page.getByRole("heading", { name: "Select your plan" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Pick add-ons" })
+  ).not.toBeVisible();
+});
