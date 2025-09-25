@@ -6,61 +6,74 @@ const TODO_ITEMS = [
   "+775781568",
 ] as const;
 
-async function goToPlanStep(page: Page) {
+const REQUIRED_FIELDS = [
+  { label: "Name", value: TODO_ITEMS[0] },
+  { label: "Email Address", value: TODO_ITEMS[1] },
+  { label: "Phone Number", value: TODO_ITEMS[2] },
+];
+
+async function goToForm(page: Page) {
   await page.goto("http://localhost:5173");
+}
 
-  await page.getByLabel("Name").fill(TODO_ITEMS[0]);
-  await page.getByLabel("Email Address").fill(TODO_ITEMS[1]);
-  await page.getByLabel("Phone Number").fill(TODO_ITEMS[2]);
-
+async function Button(page: Page) {
   await page.getByRole("button", { name: "Next Step" }).click();
 }
 
-async function goToAddOnStep(page: Page) {
-  await goToPlanStep(page);
+test("complete multi-step form and reach Thank You page", async ({ page }) => {
+  await goToForm(page);
+
+  for (const value of REQUIRED_FIELDS) {
+    if (value.label === value.label) {
+      await page.getByLabel(value.label).fill(value.value);
+    }
+  }
+  await Button(page);
 
   await page.getByText("Arcade").click();
-
-  await page.getByRole("button", { name: "Next Step" }).click();
-}
-
-async function goToConfrimStep(page: Page) {
-  await goToPlanStep(page);
-  await goToAddOnStep(page);
-  await expect(
-    page.getByRole("heading", { name: "Pick add-ons" })
-  ).toBeVisible();
+  await Button(page);
 
   await page.getByText("Online service").click();
-  await page.getByRole("button", { name: "Next Step" }).click();
-}
+  await Button(page);
 
-test("fill the first inputs", async ({ page }) => {
-  await goToPlanStep(page);
-
-  await expect(
-    page.getByRole("heading", { name: "Select your plan" })
-  ).toBeVisible();
+  await page.getByRole("button", { name: "Confirm" }).click();
+  await expect(page.getByRole("heading", { name: "Thank you" })).toBeVisible();
 });
 
-test("choose plan", async ({ page }) => {
-  await goToAddOnStep(page);
-  await expect(
-    page.getByRole("heading", { name: "Pick add-ons" })
-  ).toBeVisible();
-});
+// Validation test
 
-test("adds-ons section additional services", async ({ page }) => {
-  await goToConfrimStep(page);
-  await expect(
-    page.getByRole("heading", { name: "Finishing up" })
-  ).toBeVisible();
-});
+test.describe("Required Fields Validation", () => {
+  for (const field of REQUIRED_FIELDS) {
+    test(`shows error when ${field.label} is empty`, async ({ page }) => {
+      await goToForm(page);
 
-test("Confrim last page", async({page})=> {
-  await goToConfrimStep(page);
-  await page.getByRole("button", { name: "Next Step" }).click();
-   await expect(
-    page.getByRole("heading", { name: "Thank you" })
-  ).toBeVisible();
-})
+      for (const f of REQUIRED_FIELDS) {
+        if (f.label !== field.label) {
+          await page.getByLabel(f.label).fill(f.value);
+        }
+      }
+
+      await page.getByRole("button", { name: "Next Step" }).click();
+
+      const errors = page.locator("text=This field is required");
+      await expect(errors).toHaveCount(1);
+      await expect(errors.first()).toBeVisible();
+    });
+  }
+
+  test("shows errors for all required fields when nothing is filled", async ({
+    page,
+  }) => {
+    await goToForm(page);
+
+    await page.getByRole("button", { name: "Next Step" }).click();
+
+    const errors = page.locator("text=This field is required");
+
+    await expect(errors).toHaveCount(REQUIRED_FIELDS.length);
+
+    for (let i = 0; i < REQUIRED_FIELDS.length; i++) {
+      await expect(errors.nth(i)).toBeVisible();
+    }
+  });
+});
