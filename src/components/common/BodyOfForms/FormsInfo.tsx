@@ -24,8 +24,8 @@ const Forms = <K extends keyof FormValues>({ fieldKey, label, type, placeholder,
       <input
         type={type}
         placeholder={placeholder}
-        className={`border  rounded-md p-2 w-full hover:border-Purple-600 cursor-pointer ${errors?.[fieldKey] ? "border-Red-500" : "border-Purple-200"}`}
-        {...register(fieldKey, getValidationRules(fieldKey, type) as any)}
+        className={`border  rounded-md p-2 w-full hover:border-Purple-600 focus:outline-none ${errors?.[fieldKey] ? "border-Red-500" : "border-Purple-200"}`}
+        {...register(fieldKey, getValidationRules(fieldKey, type) as K)}
       />
     </label>
   );
