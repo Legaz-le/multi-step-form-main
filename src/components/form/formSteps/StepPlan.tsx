@@ -59,7 +59,7 @@ const SecondStep = () => {
           <span className="absolute inset-0 bg-Blue-950 rounded-full transition-color duration-200 ease-in-out" />
           <span className="toggle"></span>
         </label>
-        <p className={`font-[700] ${billing === "yearly" ? "text-Blue-950" : "text-Grey-500"}`}>Yearly</p>
+        <p className={`${billing === "yearly" ? "text-Blue-950" : "text-Grey-500"}`}>Yearly</p>
       </div>
     </section>
   );

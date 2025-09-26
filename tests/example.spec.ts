@@ -7,47 +7,12 @@ import {
 } from "./test.data";
 
 import { addOnsData } from "../src/data/data";
-
-interface RequiredField {
-  label: string;
-  value: string;
-}
-
-async function goToForm(page: Page) {
-  await page.goto("http://localhost:5173");
-}
-
-async function Button(page: Page) {
-  await page.getByRole("button", { name: "Next Step" }).click();
-}
-
-async function FillingInputs(page: Page) {
-  for (const value of REQUIRED_FIELDS) {
-    await page.getByLabel(value.label).fill(value.value);
-  }
-}
-
-async function runInvalidFieldTests(
-  fieldLabel: string,
-  invalidValues: string[],
-  errorMessage: string
-): Promise<void> {
-  for (const field of invalidValues) {
-    test(`invalid ${fieldLabel} ${field}`, async ({ page }: { page: Page }) => {
-      await goToForm(page);
-      for (const value of REQUIRED_FIELDS as RequiredField[]) {
-        if (fieldLabel !== value.label) {
-          await page.getByLabel(value.label).fill(value.value);
-        } else {
-          await page.getByLabel(value.label).fill(field);
-        }
-      }
-      await Button(page);
-      const errors = page.locator(`text=${errorMessage}`);
-      await expect(errors.first()).toBeVisible();
-    });
-  }
-}
+import {
+  goToForm,
+  FillingInputs,
+  Button,
+  runInvalidFieldTests,
+} from "./helpers";
 
 test("complete multi-step form and reach Thank You page", async ({ page }) => {
   await goToForm(page);
@@ -174,8 +139,25 @@ test("select and unselect add-ons", async ({ page }) => {
 
     await checkbox.check({ force: true });
     await expect(checkbox).toBeChecked();
-    
+
     await checkbox.uncheck({ force: true });
     await expect(checkbox).not.toBeChecked();
   }
 });
+
+test("Check toggle button", async ({ page }) => {
+  await goToForm(page);
+
+  await FillingInputs(page);
+  await Button(page);
+
+  await page.getByText("Arcade").click();
+  await page.click('label[for="hs-basic-usage"]');
+  await expect(page.getByText("Yearly", { exact: true })).toHaveClass(
+    /text-Blue-950/
+  );
+});
+
+// UI State
+
+

@@ -1,4 +1,4 @@
-import {useFormContext as useRHFContext} from "react-hook-form";
+import { useFormContext as useRHFContext } from "react-hook-form";
 
 import type { AddOnsType, FormValues } from "../../../types/types";
 import type { UseFormRegister } from "react-hook-form";
@@ -20,9 +20,7 @@ const AddOnsBody = ({
   const billing = watch("billing", "monthly");
   return (
     <label
-      className={`body ${
-        services ? "border-Purple-600" : "border-gray-300"
-      }`}
+      className={`body ${services ? "border-Purple-600" : "border-gray-300"}`}
     >
       <div className="flex-center md:gap-6 gap-2">
         <div className="relative inline-flex items-center">
@@ -49,7 +47,9 @@ const AddOnsBody = ({
           <p className="text-Grey-500 font-[500] text-[13px]">{desc}</p>
         </div>
       </div>
-      <span className="text-Purple-600 font-[500] text-sm">{billing === "monthly" ? price.monthly : price.yearly}</span>
+      <span className="text-Purple-600 font-[500] text-sm">
+        {billing === "monthly" ? price.monthly : price.yearly}
+      </span>
     </label>
   );
 };
