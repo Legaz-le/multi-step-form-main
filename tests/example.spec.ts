@@ -146,3 +146,13 @@ test("Heading visible at each step", async ({ page }) => {
 
 // Accessibility
 
+test.only("Navigate via Tab/Enter only", async ({ page }) => {
+  for (const field of REQUIRED_FIELDS) {
+    await page.getByLabel(field.label).focus();
+    await page.keyboard.type(field.value);
+    await page.keyboard.press("Tab");
+  }
+  await page.getByRole("button", { name: "Next Step" }).focus();
+  await page.getByRole("button", { name: "Next Step" }).press("Enter");
+  await expectStepHeading(page, "Select your plan");
+});
