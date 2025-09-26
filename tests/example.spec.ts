@@ -32,6 +32,8 @@ test("complete multi-step form and reach Thank You page", async ({ page }) => {
 
 // Validation test
 
+// need to turn off disable function on NextButton to able to test it.
+
 // test.describe.only("Required Fields Validation", () => {
 //   for (const field of REQUIRED_FIELDS) {
 //     test(`shows error when ${field.label} is empty`, async ({ page }) => {
