@@ -75,80 +75,84 @@ test.describe("invalid value", () => {
   );
 });
 
-// Navigation
 
-test("Check input value kept after clicking back button", async ({ page }) => {
-  await goToPlanStep(page);
-  await page.getByRole("button", { name: "Go Back" }).click();
-  for (const value of REQUIRED_FIELDS) {
-    await expect(page.getByLabel(value.label)).toHaveValue(value.value);
-  }
+test.describe("navigation testing", () => {
+  test("Check input value kept after clicking back button", async ({
+    page,
+  }) => {
+    await goToPlanStep(page);
+    await page.getByRole("button", { name: "Go Back" }).click();
+    for (const value of REQUIRED_FIELDS) {
+      await expect(page.getByLabel(value.label)).toHaveValue(value.value);
+    }
+  });
+
+  test("Double click Next Step button", async ({ page }) => {
+    await fillRequiredFields(page);
+    await page.getByRole("button", { name: "Next Step" }).dblclick();
+    await expectStepHeading(page, "Select your plan");
+  });
 });
 
-test("Double click Next Step button", async ({ page }) => {
-  await fillRequiredFields(page);
-  await page.getByRole("button", { name: "Next Step" }).dblclick();
-  await expectStepHeading(page, "Select your plan");
+
+test.describe("Data Integrity", () => {
+  test("check plan is shown in confirm page", async ({ page }) => {
+    await goToPlanStep(page);
+    await selectPlan(page, "Arcade");
+    await selectAddOn(page, "Online service");
+    await expect(page.getByRole("heading", { name: "Arcade" })).toBeVisible();
+  });
+
+  test("select and unselect add-ons", async ({ page }) => {
+    await goToPlanStep(page);
+    await selectPlan(page, "Arcade");
+
+    for (const addons of addOnsData) {
+      const checkbox = page.getByLabel(addons.title);
+
+      await checkbox.check({ force: true });
+      await expect(checkbox).toBeChecked();
+
+      await checkbox.uncheck({ force: true });
+      await expect(checkbox).not.toBeChecked();
+    }
+  });
+
+  test("Check toggle button", async ({ page }) => {
+    await goToPlanStep(page);
+
+    await page.getByText("Arcade").click();
+    await page.click('label[for="hs-basic-usage"]');
+    await expect(page.getByText("Yearly", { exact: true })).toHaveClass(
+      /text-Blue-950/
+    );
+  });
 });
 
-// Data Integrity
 
-test("check plan is shown in confirm page", async ({ page }) => {
-  await goToPlanStep(page);
-  await selectPlan(page, "Arcade");
-  await selectAddOn(page, "Online service");
-  await expect(page.getByRole("heading", { name: "Arcade" })).toBeVisible();
+test.describe("UI State", () => {
+  test("Next step is disabled until inputs are valid", async ({ page }) => {
+    expect(page.getByRole("button", { name: "Next Step" })).toBeDisabled();
+    await fillRequiredFields(page);
+    await page.getByRole("button", { name: "Next Step" }).click();
+  });
+
+  test("Heading visible at each step", async ({ page }) => {
+    await expectStepHeading(page, "Personal info");
+    await goToPlanStep(page);
+
+    await expectStepHeading(page, "Select your plan");
+    await selectPlan(page, "Arcade");
+
+    await expectStepHeading(page, "Pick add-ons");
+    await selectAddOn(page, "Online service");
+
+    await expectStepHeading(page, "Finishing up");
+  });
 });
-
-test("select and unselect add-ons", async ({ page }) => {
-  await goToPlanStep(page);
-  await selectPlan(page, "Arcade");
-
-  for (const addons of addOnsData) {
-    const checkbox = page.getByLabel(addons.title);
-
-    await checkbox.check({ force: true });
-    await expect(checkbox).toBeChecked();
-
-    await checkbox.uncheck({ force: true });
-    await expect(checkbox).not.toBeChecked();
-  }
-});
-
-test("Check toggle button", async ({ page }) => {
-  await goToPlanStep(page);
-
-  await page.getByText("Arcade").click();
-  await page.click('label[for="hs-basic-usage"]');
-  await expect(page.getByText("Yearly", { exact: true })).toHaveClass(
-    /text-Blue-950/
-  );
-});
-
-// UI State
-
-test("Next step is disabled until inputs are valid", async ({ page }) => {
-  expect(page.getByRole("button", { name: "Next Step" })).toBeDisabled();
-  await fillRequiredFields(page);
-  await page.getByRole("button", { name: "Next Step" }).click();
-});
-
-test("Heading visible at each step", async ({ page }) => {
-  await expectStepHeading(page, "Personal info");
-  await goToPlanStep(page);
-
-  await expectStepHeading(page, "Select your plan");
-  await selectPlan(page, "Arcade");
-
-  await expectStepHeading(page, "Pick add-ons");
-  await selectAddOn(page, "Online service");
-
-  await expectStepHeading(page, "Finishing up");
-});
-
 // Accessibility
 
-test.only("Navigate via Tab/Enter only", async ({ page }) => {
+test("Navigate via Tab/Enter only", async ({ page }) => {
   for (const field of REQUIRED_FIELDS) {
     await page.getByLabel(field.label).focus();
     await page.keyboard.type(field.value);
