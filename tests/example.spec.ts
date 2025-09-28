@@ -75,7 +75,6 @@ test.describe("invalid value", () => {
   );
 });
 
-
 test.describe("navigation testing", () => {
   test("Check input value kept after clicking back button", async ({
     page,
@@ -93,7 +92,6 @@ test.describe("navigation testing", () => {
     await expectStepHeading(page, "Select your plan");
   });
 });
-
 
 test.describe("Data Integrity", () => {
   test("check plan is shown in confirm page", async ({ page }) => {
@@ -129,7 +127,6 @@ test.describe("Data Integrity", () => {
   });
 });
 
-
 test.describe("UI State", () => {
   test("Next step is disabled until inputs are valid", async ({ page }) => {
     expect(page.getByRole("button", { name: "Next Step" })).toBeDisabled();
@@ -150,15 +147,84 @@ test.describe("UI State", () => {
     await expectStepHeading(page, "Finishing up");
   });
 });
-// Accessibility
 
-test("Navigate via Tab/Enter only", async ({ page }) => {
-  for (const field of REQUIRED_FIELDS) {
-    await page.getByLabel(field.label).focus();
-    await page.keyboard.type(field.value);
-    await page.keyboard.press("Tab");
-  }
-  await page.getByRole("button", { name: "Next Step" }).focus();
-  await page.getByRole("button", { name: "Next Step" }).press("Enter");
-  await expectStepHeading(page, "Select your plan");
+test.describe("Accessibility", () => {
+  test("Navigate via Tab/Enter only", async ({ page }) => {
+    for (const field of REQUIRED_FIELDS) {
+      await page.getByLabel(field.label).focus();
+      await page.keyboard.type(field.value);
+      await page.keyboard.press("Tab");
+    }
+    await page.getByRole("button", { name: "Next Step" }).focus();
+    await page.getByRole("button", { name: "Next Step" }).press("Enter");
+    await expectStepHeading(page, "Select your plan");
+  });
+
+  test("Error messages announced with screen readers", async ({ page }) => {
+    await page.getByLabel("Name").fill("Test User");
+
+    await page.getByLabel("Email Address").fill("not-an-email");
+    await page.getByLabel("Phone Number").fill("123");
+
+    await page.getByRole("button", { name: "Next Step" }).click();
+
+    const errors = page.locator('[role="alert"]');
+    await expect(errors).toHaveCount(2);
+
+    for (const field of ["email", "phone"]) {
+      const input = page.getByLabel(
+        field === "email" ? "Email Address" : "Phone Number"
+      );
+      const errorId = `${field}-error`;
+      await expect(input).toHaveAttribute("aria-invalid", "true");
+      await expect(input).toHaveAttribute("aria-describedby", errorId);
+      await expect(page.locator(`#${errorId}`)).toBeVisible();
+    }
+  });
+});
+
+test.describe("Edge Cases", () => {
+  test("Refresh in middle of form resets progress", async ({ page }) => {
+    await goToPlanStep(page);
+
+    await expectStepHeading(page, "Select your plan");
+    await page.reload();
+
+    await expectStepHeading(page, "Personal info");
+
+    for (const field of REQUIRED_FIELDS) {
+      await expect(page.getByLabel(field.label)).toHaveValue("");
+    }
+  });
+
+  test("Form is usable on mobile viewport", async ({ page }) => {
+    await page.emulateMedia({ media: "screen" });
+    await page.setViewportSize({ width: 390, height: 844 });
+
+    await page.goto("http://localhost:5173");
+
+    await goToPlanStep(page);
+
+    await expect(
+      page.getByRole("heading", { name: "Select your plan" })
+    ).toBeVisible();
+
+    const nextButton = page.getByRole("button", { name: "Next Step" });
+    await expect(nextButton).toBeVisible();
+
+    // You can also scroll to ensure elements are not cut off
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  });
+});
+
+test("Form load time is fast", async ({ page }) => {
+  const start = Date.now();
+  await page.goto("http://localhost:5173", { waitUntil: "load" });
+
+  await page.getByLabel("Name").waitFor({ state: "visible" });
+
+  const loadTime = Date.now() - start;
+  console.log(`Form load time: ${loadTime} ms`);
+
+  expect(loadTime).toBeLessThan(1000);
 });

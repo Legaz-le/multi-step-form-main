@@ -5,9 +5,9 @@ export const TODO_ITEMS = [
 ] as const;
 
 export const REQUIRED_FIELDS = [
-  { label: "Name", value: TODO_ITEMS[0] },
-  { label: "Email Address", value: TODO_ITEMS[1] },
-  { label: "Phone Number", value: TODO_ITEMS[2] },
+  { key: "name", label: "Name", value: "buy some cheese" },
+  { key: "email", label: "Email Address", value: "abylaikhan@gmail.com" },
+  { key: "phone", label: "Phone Number", value: "+77571353081" },
 ];
 
 export const INVALID_EMAIL = [
